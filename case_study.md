@@ -358,9 +358,9 @@ We're now ready to gather Spotify Artist codes for each artist.
 
 <a name="lookup"></a>
 
-### Lookup Artist Codes in Spotify
+### Look Up Artist Codes in Spotify
 
-There isn't an easy way to gather Artist Codes within the mobile or desktop versions of the Spotify application; however, we can obtain what we need if we use the web-application version of Spotify. Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
+There isn't an easy way to gather "Artist Codes" within the mobile or desktop versions of the Spotify application; however, we can get what we need if we use the web-application. Navigate to <a href="https://open.spotify.com">https://open.spotify.com</a> and log in.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i42.png "Spotify Web Application")
 
@@ -374,132 +374,41 @@ Browse to the appropriate artist in the search results and then copy the alphanu
 
 Repeat this process until you have obtained all 30 of the Artist Codes.
 
-<table>
-	<tr>
-		<th>Artist</th>
-		<th>Artist Code</th>
-	</tr>
-	<tr>
-		<td>Orchid</td>	
-		<td>6tEdQbmg3bKE6IjmH5hO9d</td>
-	</tr>
-		<tr>
-		<td>G.L.O.S.S.</td>	
-		<td>2s4gtd98phMFZf7dMagxjU</td>
-	</tr>
-	<tr>
-		<td>Royal Headache</td>	
-		<td>01Jsi7Q2a1GdLvNShahaj1</td>	
-	</tr>	
-	<tr>
-		<td>Czarface, MF Doom</td>	
-		<td>4John8fJ3LKqFho0pselVr</td>
-	</tr>
-		<tr>
-		<td>New Order</td>	
-		<td>0yNLKJebCb8Aueb54LYya3</td>
-	</tr>
-	<tr>
-		<td>St. Paul & The Broken Bones</td>
-		<td>4fXkvh05wFhuH77MfD4m9o</td>
-	</tr>			
-	<tr>
-		<td>The Cure</td>
-		<td>7bu3H8JO7d0UbMoVzbo70s</td>	
-	</tr>	
-	<tr>
-		<td>The Civil Wars</td>
-		<td>6J7rw7NELJUCThPbAfyLIE</td>	
-	</tr>	
-	<tr>
-		<td>Siouxsie & The Banshees</td>
-		<td>1n65zfwYIj5kKEtNgxUlWb</td>	
-	</tr>	
-	<tr>
-		<td>The Impalers</td>
-		<td>5KL1Z3v4Q9zOMh74WEg7UT</td>	
-	</tr>
-		<tr>
-		<td>Hot Chip</td>
-		<td>37uLId6Z5ZXCx19vuruvv5</td>	
-	</tr>		
-	<tr>
-		<td>Neil Young & Crazy Horse</td>
-		<td>6v8FB84lnmJs434UJf2Mrm</td>	
-	</tr>	
-	<tr>
-		<td>Cryptic Slaughter</td>	
-		<td>20ml1U2ibB2HPnPpWrJIKT</td>
-	</tr>	
-	<tr>
-		<td>The Devil Makes Three</td>
-		<td>63knPlGzLHTNDf1J78Fvte</td>	
-	</tr>	
-	<tr>
-		<td>Glassjaw</td>
-		<td>7nt6S4klYHg4I7Q4lTSmc0</td>
-	</tr>	
-	<tr>
-		<td>The Specials</td>	
-		<td>6xnvNmSzmeOE1bLKnYXKW3</td>
-	</tr>	
-	<tr>
-		<td>Built To Spill</td>
-		<td>3kbBWco9PZ5eSQsNScwG6U</td>	
-	</tr>
-	<tr>
-		<td>The Both</td>
-		<td>6nH7HjT8QPbZI2wnTjtJui</td>	
-	</tr>		
-	<tr>
-		<td>Ostraca</td>	
-		<td>12QhXwxSPz6xu42dDkDuCV</td>
-	</tr>	
-	<tr>
-		<td>Pestilence</td>
-		<td>6JcFn4PlXFuXmhRXpOpsan</td>	
-	</tr>	
-	<tr>
-		<td>Snapcase</td>	
-		<td>1egTA9mNgTwglPEQLmMd9W</td>
-	</tr>	
-	<tr>
-		<td>Boygenius</td>
-		<td>5BRORKnC2HD5xhgUyR31SH</td>
-	</tr>	
-	<tr>
-		<td>Preoccupations</td>
-		<td>2bs3QE2ZMBjmb0QTqAjCj3</td>	
-	</tr>	
-	<tr>
-		<td>Fang</td>	
-		<td>6vBFJ3JwYIzw3nRxy4vpbq</td>
-	</tr>	
-	<tr>
-		<td>Sleep</td>
-		<td>4Mt6w4tDGiPgV5q6JWPlrI</td>	
-	</tr>	
-	<tr>
-		<td>Minor Threat</td>
-		<td>07PiZYrhllpSXtELkUxlrf</td>	
-	</tr>	
-	<tr>
-		<td>Mandolin Orange</td>
-		<td>675tsBPpaZtqyiBwEf3ZEP</td>	
-	</tr>	
-	<tr>
-		<td>The Pillows</td>
-		<td>6ilYV5oF8whllOnm4VZlYR</td>
-	</tr>	
-	<tr>
-		<td>Indecision</td>
-		<td>3WdlM6O8p5wxmx3p7hrPHM</td>	
-	</tr>	
-	<tr>
-		<td>Minus The Bear</td>
-		<td>0YQBN02bmZvwGNrrWsg2sT</td>	
-	</tr>	
-	</table>
+|Artist|Artist Code|
+|--- |--- |
+|Orchid|6tEdQbmg3bKE6IjmH5hO9d|
+|G.L.O.S.S.|2s4gtd98phMFZf7dMagxjU|
+|Royal Headache|01Jsi7Q2a1GdLvNShahaj1|
+|Czarface, MF Doom|4John8fJ3LKqFho0pselVr|
+|New Order|0yNLKJebCb8Aueb54LYya3|
+|St. Paul & The Broken Bones|4fXkvh05wFhuH77MfD4m9o|
+|The Cure|7bu3H8JO7d0UbMoVzbo70s|
+|The Civil Wars|6J7rw7NELJUCThPbAfyLIE|
+|Siouxsie & The Banshees|1n65zfwYIj5kKEtNgxUlWb|
+|The Impalers|5KL1Z3v4Q9zOMh74WEg7UT|
+|Hot Chip|37uLId6Z5ZXCx19vuruvv5|
+|Neil Young & Crazy Horse|6v8FB84lnmJs434UJf2Mrm|
+|Cryptic Slaughter|20ml1U2ibB2HPnPpWrJIKT|
+|The Devil Makes Three|63knPlGzLHTNDf1J78Fvte|
+|Glassjaw|7nt6S4klYHg4I7Q4lTSmc0|
+|The Specials|6xnvNmSzmeOE1bLKnYXKW3|
+|Built To Spill|3kbBWco9PZ5eSQsNScwG6U|
+|The Both|6nH7HjT8QPbZI2wnTjtJui|
+|Ostraca|12QhXwxSPz6xu42dDkDuCV|
+|Pestilence|6JcFn4PlXFuXmhRXpOpsan|
+|Snapcase|1egTA9mNgTwglPEQLmMd9W|
+|Boygenius|5BRORKnC2HD5xhgUyR31SH|
+|Preoccupations|2bs3QE2ZMBjmb0QTqAjCj3|
+|Fang|6vBFJ3JwYIzw3nRxy4vpbq|
+|Sleep|4Mt6w4tDGiPgV5q6JWPlrI|
+|Minor Threat|07PiZYrhllpSXtELkUxlrf|
+|Mandolin Orange|675tsBPpaZtqyiBwEf3ZEP|
+|The Pillows|6ilYV5oF8whllOnm4VZlYR|
+|Indecision|3WdlM6O8p5wxmx3p7hrPHM|
+|Minus The Bear|0YQBN02bmZvwGNrrWsg2sT|
+
+	
+We're now ready to start building our application to generate a Spotify playlist from the data we've obtained.	
 
 [Back To Top](#top)
 
@@ -535,6 +444,7 @@ We have no successfully created our "Client ID" and our application is registere
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i8.png "Registration Complete")
 
 [Back To Top](#top)
+
 <a name="register"></a>
 
 ### Use Postman to Access the Spotify API
