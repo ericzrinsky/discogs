@@ -377,3 +377,7 @@ You can listen to the playlists that I created during this case study on Spotify
 * [RVIVR Mix](https://open.spotify.com/playlist/1ojzxWARZkifrZXkPrrnsE?si=Bua9OhB5QOuj7uf6kYHtkw)
 
 [Back To Top](#top)
+
+<div class="extended-markdown tip border rounded-1 mb-4 p-3 border-blue bg-blue-light f5">
+<p><strong>Tip:</strong> To preserve your formatting within a list, make sure to indent non-fenced code blocks by eight spaces.</p>
+</div>
