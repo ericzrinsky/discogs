@@ -217,7 +217,7 @@ Paste the "refresh_token" into the "refresh_token" textboxes and fill out the re
 
 * user_id: ```your spotify username```
 * country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and provides this number of tracks from an included artist int he playlist```
+* N: ```defaults to 5 and provides this number of tracks from an included artist in the playlist```
 * artists: ```List of seed artists that we generated in the [Lookup Artist Codes in Spotify](#lookup) section above```
 
 The table below includes the artist names and corresponding artist codes we generated from our database:
