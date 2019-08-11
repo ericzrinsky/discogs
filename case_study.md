@@ -28,6 +28,7 @@ As an avid record collector, I find myself curating my musical tastes carefullyâ
 * [Appendix](#appendix)
 	* [Install SQLite](#install)
 	* [Enjoy](#enjoy)
+	* [Thanks](#thanks)
 
 <a name="requirements"></a>
 
@@ -548,7 +549,7 @@ Paste the "refresh_token" into the "refresh_token" textboxes and fill out the re
 
 * user_id: ```your spotify username```
 * country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and provides this number of tracks from an included artist in the playlist. We set ours to 1```
+* N: ```defaults to 5 and provides this number of tracks from a related artist.```
 * artists: ```List of seed artists that we generated in the [Lookup Artist Codes in Spotify](#lookup) section above```
 
 						
@@ -584,7 +585,7 @@ Click "Spotify Playlist Generator" under "All Collections," select "SpotifyGenV1
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i25.png "Start Run")
 
-If your collection runs were successful, "Collection Runner" will display 12 passed requests.
+If your collection runs were successful, "Collection Runner" will display all passed requests and no failed requests)
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i26.png "Success")
 
@@ -654,6 +655,23 @@ sqlite3
 
 You can listen to the playlists that I created during this case study on Spotify with the links below:
 
-* [RVIVR Mix](https://open.spotify.com/playlist/1ojzxWARZkifrZXkPrrnsE?si=Bua9OhB5QOuj7uf6kYHtkw)
+* [Built To Spill Mix](https://open.spotify.com/playlist/3pdKPOX2FafbulICMm6I0m?si=wfqA9Js1RdeLLmvFkN_HIQ) - Indie Rock
+* [New Order Mix](https://open.spotify.com/playlist/0DOwHUcfuubIIJdlH1Xi0o?si=rG2a0yDuRAeIxNzpyfT74Q) - New Wave
+* [Mandolin Orange Mix](https://open.spotify.com/playlist/7C5UhAteTywXcxWy52rONP?si=z_D_7vW-RtKR1wyhPVpbsw) - Alt-Country/Americana
+* [Glassjaw Mix](https://open.spotify.com/playlist/6x0nWb95oBzBJUWsEwoNMI?si=_08rDXF5SICew50socKzng) - Hardcore 
+* [Minor Threat Mix](https://open.spotify.com/playlist/0k3v01z7krUjs0iD7UtRFY?si=32BPD4DnQu-UtfSwCIRr4g) - Punk Rock
+* [The Impalers Mix](https://open.spotify.com/playlist/7cPGCkAXeSXcaFt3CLQDnX?si=7JBcP61eQSuJGz0Z9gM48g) - Reggae
+* [CZARFACE Mix](https://open.spotify.com/playlist/0havuxrBJUzAhDoCgNqdib?si=0do_PuN1SDWZZtoWm4SWtA) - Rap/Hip-Hop
+* [Minus The Bear Mix](https://open.spotify.com/playlist/3kvfPdi38KvOjEVm55KF5V?si=KLY_nm5fSwWFE2sXxgMPjw) - Emo
+* [St. Paul & The Broken Bones Mix](https://open.spotify.com/playlist/49pxs8Sm1SjY2laTfbw1gp?si=ccY9Qd6zR_KGyC1pMKlMiA) - Soul
+* [Neil Young Mix](https://open.spotify.com/playlist/5n2GWs9vSineMNcsTh4QkD?si=G10tG0MqTnyyTYroFHX2-g) - Folk
+
+[Back To Top](#top)
+
+<a name="thanks"></a>
+
+### Thanks
+
+Huge amount of thanks go out to my good friends Stephen Dyer, Paul Caddaciottu, and Leigh Stuckey who quickly volunteered to help me out and provided me with their record collection data.
 
 [Back To Top](#top)
