@@ -123,7 +123,236 @@ Browse to the database file we created earlier, give your database a recognizabl
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i31.png "Add A Database")
 
-Now, we need to import each of our .CSV files into **SQLiteStudio** so we can use them as tables in our database. To do that, click **Tools**—>**Import** in the navbar.
+Now, we need to import each of our .CSV files into **SQLiteStudio** so we can use them as tables in our database. 
+1. Double-click the new "Record Collection" database in the "Databases" panel
+2. Click "Tables" under that database to highlight it
+3. Click **Tools**—>**Import** in the navbar.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i32.png "Import Table")
+
+We'll start with the .CSV file for my collection (Eric's Record Collection.csv) and will repeat this process for the 3 other files as well. Give the table a useful name (we used Eric's Record Collection for the first file), and then click the "Continue" button.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i33.png "Import Table")
+
+1. Browse to file for the first dataset on your computer. 
+2. Verify that it says "CSV" in "Data source type" drop-down 
+3. Click the check box for "First line represents CSV column names" 
+4. Verify that ", (comma)" is set for the "Field separator" drop-down. 
+5. Click the "Done" button. Repeat this process for the 3 other .CSV files.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i34.png "Import Table")
+
+Now that we have imported all file tables into our database, we need to define the "Data type" for each column. Use the "data types" below for the columns in the "Eric's Record Collection" table and then repeat this process for the remaining 3 tables.
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Data type</th>
+	</tr>	
+	<tr>
+		<td>Catalog</td>
+		<td>STRING</td>
+	</tr>
+		<tr>
+		<td>Artist</td>
+		<td>STRING</td>
+	</tr>		
+		<tr>
+		<td>Title</td>
+		<td>STRING</td>
+	</tr>
+	</tr>		
+		<tr>
+		<td>Label</td>
+		<td>STRING</td>
+	</tr>		
+	</tr>		
+		<tr>
+		<td>Format</td>
+		<td>STRING</td>
+	</tr>
+	</tr>		
+		<tr>
+		<td>Rating</td>
+		<td>STRING</td>
+	</tr>	
+	</tr>		
+		<tr>
+		<td>Released</td>
+		<td>INTEGER</td>
+	</tr>
+	</tr>		
+		<tr>
+		<td>release_id</td>
+		<td>INTEGER</td>
+	</tr>
+	</tr>		
+		<tr>
+		<td>CollectionFolder</td>
+		<td>STRING</td>
+	</tr>				
+	</tr>		
+		<tr>
+		<td>Date Added</td>
+		<td>DATETIME</td>
+	</tr>
+	</tr>		
+		<tr>
+		<td>Collection Media Condition</td>
+		<td>STRING</td>
+	</tr>		
+	</tr>		
+		<tr>
+		<td>Collection Sleeve Condition</td>
+		<td>STRING</td>
+	</tr>	
+	</tr>		
+		<tr>
+		<td>Collection Notes</td>
+		<td>STRING</td>
+	</tr>	
+</table>	
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i35.png "Data Type")
+
+Now that we have our data in place, it's time to start manipulating it. To do that, we need to launch the "SQL Editor" in **SQLiteStudio**. Click **Tools**—>**Open SQL Editor** in the navbar.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i36.png "Open SQL Editor")
+
+Before we run any complicated queries in the "SQL Editor," we should first verify that we can access all of the data in our tables. We'll do that with a few basic INNER JOINs. 
+
+Paste the code below into the "SQL Editor":
+
+```SQL
+SELECT artist, 
+       title 
+FROM   eric_records AS e 
+UNION 
+SELECT artist, 
+       title 
+FROM   leigh_records AS l 
+UNION 
+SELECT artist, 
+       title 
+FROM   steve_records AS s 
+UNION 
+SELECT artist, 
+       title 
+FROM   paul_records AS p 
+ORDER  BY artist; 
+```
+
+If your query was successful, you should see "Total rows loaded: 1462" at the top of your results.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i37.png "UNION Query - All")
+
+Let's tweak our query a little to only include artists in the results since that is what we will need to generate our playlist in Spotify.
+
+Paste the code below into the "SQL Editor":
+
+```SQL
+SELECT artist
+FROM   eric_records AS e 
+UNION 
+SELECT artist
+FROM   leigh_records AS l 
+UNION 
+SELECT artist
+FROM   steve_records AS s 
+UNION 
+SELECT artist
+FROM   paul_records AS p 
+ORDER  BY artist; 
+```
+
+If your query was successful, you should now see "Total rows loaded: 882" at the top of your results.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i38.png "UNION Query - Artists")
+
+This gets a us a little bit closer, but 882 is still a bit too many artists for us to work with for a Spotify playlist. 
+
+For the end result, I'd like to generate a playlist that introduces me to all new music and excludes any artists that are contained within the "Eric's Record Collection" table. In order to do that, we will create a new table called "new_artists" that will store the results from each table comparison. 
+
+Right click "Tables" in the "Databases" panel and then click "Create A Table."
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i39.png "Create A New Table")
+
+Type "new_artists" in the "Table name:" textbox and then click the "Add column" button.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i40.png "Add a column")
+
+1. Type "artist" in the "Column name:" textbox. 
+2. Type "STRING" in the "Data type:" checkbox.
+3. Click the "OK" button.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i41.png "Data Type")
+
+Our table is now ready to accept data. Return to the "SQL Editor." We will tweak our code to swap a "UNION" parameters for an "EXCEPT" parameter to exclude the artists that exist in the "Eric's Record Collection" table. We'll repeat this process with each record collection table and insert the new results into our "new_artists" table.
+
+Paste the code below into the "SQL Editor":
+
+```SQL
+INSERT INTO new_artists 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   leigh_records AS l 
+WHERE  released > 2010 
+EXCEPT 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   eric_records AS e 
+WHERE  released > 2010 
+UNION 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   paul_records AS l 
+WHERE  released > 2010 
+EXCEPT 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   eric_records AS e 
+WHERE  released > 2010 
+UNION 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   steve_records AS l 
+WHERE  released > 2010 
+EXCEPT 
+SELECT DISTINCT artist AS Artist, 
+                released 
+FROM   eric_records AS e 
+WHERE  released > 2010 
+ORDER  BY artist; 
+```
+
+If our request was successful, we should now have 294 rows in the "new_artists" table. That number is still a bit too unwieldy for generating a playlist, so let's take our query one step further—let's limit results to 30 entries and to keep things interesting, let's randomize the results we get. This will allow us to generate a new list of artists with one query any time we want to create new  playlist
+
+Paste the code below into the "SQL Editor":
+
+
+```SQL
+SELECT DISTINCT artist 
+FROM   new_artists 
+ORDER  BY Random() 
+LIMIT  30; 
+```
+
+**SQLiteStudio** returned the following artists to us for our query:
+
+```
+Orchid, G.L.O.S.S., Royal Headache, 
+Czarface, MF Doom, New Order, 
+St. Paul & The Broken Bones, The Cure, Minus The Bear
+The Civil Wars, Siouxsie & The Banshees, Indecision,
+The Impalers, Hot Chip, Neil Young & Crazy Horse,
+Cryptic Slaughter, The Devil Makes Three, The Pillows,
+Glassjaw, The Specials, Built To Spill, 
+The Both, Ostraca, Pestilence,
+Snapcase, Boygenius, Preoccupations,
+Fang, Sleep, Minor Threat, Mandolin Orange
+```
+
+We're now ready to gather Spotify Artist codes for each artist.
 
 [Back To Top](#top)
 
@@ -131,9 +360,149 @@ Now, we need to import each of our .CSV files into **SQLiteStudio** so we can us
 
 ### Lookup Artist Codes in Spotify
 
-XXX
+There isn't an easy way to gather Artist Codes within the mobile or desktop versions of the Spotify application; however, we can obtain what we need if we use the web-application version of Spotify. Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
+
+![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i42.png "Spotify Web Application")
+
+Click "Search" and type the name of the artist in the "Start typing..." textbox.
+
+![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i43.png "Spotify Web Application")
+
+Browse to the appropriate artist in the search results and then copy the alphanumeric artist code at the end of the URL in the address bar.
+
+![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i44.png "Artist Code")
+
+Repeat this process until you have obtained all 30 of the Artist Codes.
+
+<table>
+	<tr>
+		<th>Artist</th>
+		<th>Artist Code</th>
+	</tr>
+	<tr>
+		<td>Orchid</td>	
+		<td>6tEdQbmg3bKE6IjmH5hO9d</td>
+	</tr>
+		<tr>
+		<td>G.L.O.S.S.</td>	
+		<td>2s4gtd98phMFZf7dMagxjU</td>
+	</tr>
+	<tr>
+		<td>Royal Headache</td>	
+		<td>01Jsi7Q2a1GdLvNShahaj1</td>	
+	</tr>	
+	<tr>
+		<td>Czarface, MF Doom</td>	
+		<td>4John8fJ3LKqFho0pselVr</td>
+	</tr>
+		<tr>
+		<td>New Order</td>	
+		<td>0yNLKJebCb8Aueb54LYya3</td>
+	</tr>
+	<tr>
+		<td>St. Paul & The Broken Bones</td>
+		<td>4fXkvh05wFhuH77MfD4m9o</td>
+	</tr>			
+	<tr>
+		<td>The Cure</td>
+		<td>7bu3H8JO7d0UbMoVzbo70s</td>	
+	</tr>	
+	<tr>
+		<td>The Civil Wars</td>
+		<td>6J7rw7NELJUCThPbAfyLIE</td>	
+	</tr>	
+	<tr>
+		<td>Siouxsie & The Banshees</td>
+		<td>1n65zfwYIj5kKEtNgxUlWb</td>	
+	</tr>	
+	<tr>
+		<td>The Impalers</td>
+		<td>5KL1Z3v4Q9zOMh74WEg7UT</td>	
+	</tr>
+		<tr>
+		<td>Hot Chip</td>
+		<td>37uLId6Z5ZXCx19vuruvv5</td>	
+	</tr>		
+	<tr>
+		<td>Neil Young & Crazy Horse</td>
+		<td>6v8FB84lnmJs434UJf2Mrm</td>	
+	</tr>	
+	<tr>
+		<td>Cryptic Slaughter</td>	
+		<td>20ml1U2ibB2HPnPpWrJIKT</td>
+	</tr>	
+	<tr>
+		<td>The Devil Makes Three</td>
+		<td>63knPlGzLHTNDf1J78Fvte</td>	
+	</tr>	
+	<tr>
+		<td>Glassjaw</td>
+		<td>7nt6S4klYHg4I7Q4lTSmc0</td>
+	</tr>	
+	<tr>
+		<td>The Specials</td>	
+		<td>6xnvNmSzmeOE1bLKnYXKW3</td>
+	</tr>	
+	<tr>
+		<td>Built To Spill</td>
+		<td>3kbBWco9PZ5eSQsNScwG6U</td>	
+	</tr>
+	<tr>
+		<td>The Both</td>
+		<td>6nH7HjT8QPbZI2wnTjtJui</td>	
+	</tr>		
+	<tr>
+		<td>Ostraca</td>	
+		<td>12QhXwxSPz6xu42dDkDuCV</td>
+	</tr>	
+	<tr>
+		<td>Pestilence</td>
+		<td>6JcFn4PlXFuXmhRXpOpsan</td>	
+	</tr>	
+	<tr>
+		<td>Snapcase</td>	
+		<td>1egTA9mNgTwglPEQLmMd9W</td>
+	</tr>	
+	<tr>
+		<td>Boygenius</td>
+		<td>5BRORKnC2HD5xhgUyR31SH</td>
+	</tr>	
+	<tr>
+		<td>Preoccupations</td>
+		<td>2bs3QE2ZMBjmb0QTqAjCj3</td>	
+	</tr>	
+	<tr>
+		<td>Fang</td>	
+		<td>6vBFJ3JwYIzw3nRxy4vpbq</td>
+	</tr>	
+	<tr>
+		<td>Sleep</td>
+		<td>4Mt6w4tDGiPgV5q6JWPlrI</td>	
+	</tr>	
+	<tr>
+		<td>Minor Threat</td>
+		<td>07PiZYrhllpSXtELkUxlrf</td>	
+	</tr>	
+	<tr>
+		<td>Mandolin Orange</td>
+		<td>675tsBPpaZtqyiBwEf3ZEP</td>	
+	</tr>	
+	<tr>
+		<td>The Pillows</td>
+		<td>6ilYV5oF8whllOnm4VZlYR</td>
+	</tr>	
+	<tr>
+		<td>Indecision</td>
+		<td>3WdlM6O8p5wxmx3p7hrPHM</td>	
+	</tr>	
+	<tr>
+		<td>Minus The Bear</td>
+		<td>0YQBN02bmZvwGNrrWsg2sT</td>	
+	</tr>	
+	</table>
 
 [Back To Top](#top)
+
 <a name="register"></a>
 
 
@@ -173,7 +542,6 @@ We have no successfully created our "Client ID" and our application is registere
 Now that our application is registered with the **Spotify For Developers Portal**, we have the permissions we need in place to access the Spotify API. 
 
 <p class="callout info">Please note, <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a> created a guide for generating playlists with **Postman**. Though his instructions provide a good starting point, they are often light on details and assume as the basis for our application, but with some tweaks that we will implement for our specific use case. You can access the original version of that guide  on the <a href="https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection"><b>Postman Blog</b></a></p>
-
 
 In a new tab (leave the **Spotify for Developers** open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)**. and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
 
@@ -377,4 +745,3 @@ You can listen to the playlists that I created during this case study on Spotify
 * [RVIVR Mix](https://open.spotify.com/playlist/1ojzxWARZkifrZXkPrrnsE?si=Bua9OhB5QOuj7uf6kYHtkw)
 
 [Back To Top](#top)
-
