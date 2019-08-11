@@ -411,6 +411,7 @@ We'll eventually need to put all of the artist codes into an array of strings fo
 
 ```
 ["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", "01Jsi7Q2a1GdLvNShahaj1", "4John8fJ3LKqFho0pselVr", "0yNLKJebCb8Aueb54LYya3", "4fXkvh05wFhuH77MfD4m9o", "7bu3H8JO7d0UbMoVzbo70s", "6J7rw7NELJUCThPbAfyLIE", "1n65zfwYIj5kKEtNgxUlWb", "5KL1Z3v4Q9zOMh74WEg7UT", "37uLId6Z5ZXCx19vuruvv5", "6v8FB84lnmJs434UJf2Mrm", "20ml1U2ibB2HPnPpWrJIKT", "63knPlGzLHTNDf1J78Fvte", "7nt6S4klYHg4I7Q4lTSmc0", "6xnvNmSzmeOE1bLKnYXKW3", "3kbBWco9PZ5eSQsNScwG6U", "6nH7HjT8QPbZI2wnTjtJui", "12QhXwxSPz6xu42dDkDuCV", "6JcFn4PlXFuXmhRXpOpsan", "1egTA9mNgTwglPEQLmMd9W", "5BRORKnC2HD5xhgUyR31SH", "2bs3QE2ZMBjmb0QTqAjCj3", "6vBFJ3JwYIzw3nRxy4vpbq", "4Mt6w4tDGiPgV5q6JWPlrI", "07PiZYrhllpSXtELkUxlrf", "675tsBPpaZtqyiBwEf3ZEP", "6ilYV5oF8whllOnm4VZlYR", "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
+
 ```
 	
 We're now ready to start building our application to generate a Spotify playlist from the data we've obtained.	
