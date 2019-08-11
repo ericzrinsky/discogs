@@ -91,47 +91,56 @@ Since we need more data to make our database interesting, I socially-sourced a f
 
 ### Create A Relational Database For The Collection
 
-Now that we have gathered the datasets that we will use for our database, we need to begin the process of importing them into our SQL application. All of this will be done at the command line level in our Terminal application. Launch terminal and initialize **SQLite Studio**.
+Now that we have gathered the datasets that we will use for our database, we need to begin the process of importing them into our **SQLite Studio**. 
+
+Before we can import any files, however, we need a database to hold them. That means we must first generate a database file. We will do that in the command line using the **Terminal** and the **SQLite** command line tool. Please note, if you have not already installed the **SQLite** command line tool, you need to do that first. Detailed instructions are available in the [Appendix](#install).
+
+If you have the **SQLite** command line tool installed, you can proceed with the directions below.
+
+Launch the **Terminal** and initialize **SQLite Studio**.
 
 ```console
 sqlite3
 ```
 
-Now that SQLite is initialized, we need to import our datasets into it. This allows SQLite to convert our flat CSV files into tables that we can eventually import into a relational database. We have 4 files that we will work with and we have identified each of their paths as follows:
+Navigate to a folder where you'd like to host your database file. We will use the command below to navigate to the folder we created specifically for this project: 
+
+```console
+cd Documents/collection/database
+```
+
+Next, create a new database with the following command:
+
+```console
+sqlite3 record_collection.db;
+```
+
+Now that we have our database file created, we can exit the **Terminal** and launch **SQLiteStudio**. We need to add our new database file to the application. To do that, click **Database** —> **Add a database** in the navbar.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i30.png "Add A Database")
+
+Browse to the database file, give your database a name (we used "Record Collection"), and then click the "OK" button.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i31.png "Add A Database")
+
+Verify that you have all 4 record collection .CSV files. Those files include:
 
 * Eric's Record Collection: ```/Users/ericzrinsky/Downloads/Eric's Record Collection.csv```
 * Leigh’s Record Collection: ```/Users/ericzrinsky/Downloads/Leigh's Record Collection.csv```
 * Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
 * Paul's Record Collection: ```/Users/ericzrinsky/Downloads/Paul's Record Collection.csv```
 
-In order to import these files, we need to first create a database to hold them. Within **Terminal**, enter the following command to navigate to a folder we previously created to host our Case Study project: 
-
-```console
-cd Documents/collection/database
-```
-
-Then, create a new database with the following command:
-
-```console
-sqlite3 record_collection.db;
-```
-
-Now that we have our database file created, we can exit the **Terminal** and launch **SQLiteStudio**. We need to add our new database file to the application. To do that, click **Database**—>**Add a database** in the navbar.
-
-![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i30.png "Add A Database")
-
-Browse to the database file we created earlier, give your database a recognizable name (we used "Record Collection"), and then click the "OK" button.
-
-![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i31.png "Add A Database")
-
-Now, we need to import each of our .CSV files into **SQLiteStudio** so we can use them as tables in our database. 
-1. Double-click the new "Record Collection" database in the "Databases" panel
+We need to import each of them into **SQLiteStudio** so we can use them as tables in our database.
+ 
+1. Double-click the "Record Collection" database in the "Databases" panel
 2. Click "Tables" under that database to highlight it
 3. Click **Tools**—>**Import** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i32.png "Import Table")
 
-We'll start with the .CSV file for my collection (Eric's Record Collection.csv) and will repeat this process for the 3 other files as well. Give the table a useful name (we used Eric's Record Collection for the first file), and then click the "Continue" button.
+We'll start with the .CSV file named "Eric's Record Collection.csv" and we will repeat this process for the 3 other files as well. 
+
+Give the table a name (we used Eric's Record Collection for the first file), and then click the "Continue" button.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i33.png "Import Table")
 
@@ -603,32 +612,33 @@ Launch **Spotify** and at the top of your "Playlists" list you should also see t
 
 ### Install SQLite
 
-If you do not already have SQL application installed on your computer, you will need to install one before you can interact with your databases. There are many options available, but SQLite is free, easy to use, and lightweight. You can download the files required to install SQLite [here](https://www.sqlite.org/download.html).
+Although we did most of our SQL work in **SQLiteStudio**, we used the **SQLite** tool to initialize our database file. There are many SQL application options available, but SQLite is free, easy to use, and lightweight. 
 
-<p class="callout info">Please note, you will need XCode Command Line Tools Installed on your computer to proceed. If you don't have that installed, you can enter the following terminal command to install it:
+Please note, you will also need XCode Command Line Tools Installed on your computer to instal SQLite. If you don't have that installed, you can enter the following command in **Terminal** to install it:
 
-<pre>
+```
 xcode-select --install
-</pre>
-</p>
+```
 
-Once you've downloaded the file, unzip it, and then launch a new terminal window. If you're unfamiliar with the terminal, [MakeUseOf](https://www.makeuseof.com) has a great [guide for beginners](https://www.makeuseof.com/tag/beginners-guide-mac-terminal/). 
+If you're unfamiliar with the terminal, [MakeUseOf](https://www.makeuseof.com) has a great [guide for beginners](https://www.makeuseof.com/tag/beginners-guide-mac-terminal/). 
+
+With Xcode installed, you can download **SQLite** [here](https://www.sqlite.org/download.html). Once you've downloaded the file, unzip it and return to the **Terminal**. 
 
 ![Terminal Window](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i1.png "Terminal Window")
 
-Within the terminal window, enter the following code to access your "Downloads" folder.
+Within the **Terminal**, enter the following code to access your "Downloads" folder.
 
 ```console
 cd Downloads/
 ```
 
-Next, we need to access the folder for the file we just unzipped. In our instance, the folder name is <code>sqlite-autoconf-3290000</code>. Next, we'll paste the command below into the terminal to change the directory. Remember to swap out the file name if need be.
+Next, we need to access the folder for the file we just unzipped. In this instance, the folder is named <code>sqlite-autoconf-3290000</code>. Paste the command below into the **Terminal** to change the directory. Remember to swap out the file name if your's doesn't match.
 
 ```console
 cd sqlite-autoconf-3290000
 ```
 
-Next, we need to enter the command below:
+Next, enter the command below to begin the installation:
 
 ```console
 ./configure --prefix=/usr/local
@@ -640,7 +650,7 @@ When the process completes, enter the last command to finish the installation:
 make
 ```
 
-It may take a few moments for the installation to complete, but once it does, you can verify that it was successful by using the command below:
+It may take a few moments to complete, but once it does, you can verify that your installation was successful with the command below:
 
 ```console
 sqlite3
@@ -648,12 +658,14 @@ sqlite3
 
 ![Terminal - Install Successful](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i2.png "Install Successful")
 
+The **SQLite** command line tool is now installed and ready to generate database files.
+
 [Back To Top](#top)
 <a name="enjoy"></a>
 
 ### Enjoy
 
-You can listen to the playlists that I created during this case study on Spotify with the links below:
+You can listen to the playlists that I generated during this project on Spotify with the links below:
 
 * [Built To Spill Mix](https://open.spotify.com/playlist/3pdKPOX2FafbulICMm6I0m?si=wfqA9Js1RdeLLmvFkN_HIQ) - Indie Rock
 * [New Order Mix](https://open.spotify.com/playlist/0DOwHUcfuubIIJdlH1Xi0o?si=rG2a0yDuRAeIxNzpyfT74Q) - New Wave
