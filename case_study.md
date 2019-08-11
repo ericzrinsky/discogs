@@ -315,19 +315,19 @@ cd sqlite-autoconf-3290000
 
 Next, we need to enter the command below:
 
-```bash
+```console
 ./configure --prefix=/usr/local
 ```
 
 When the process completes, enter the last command to finish the installation:
 
-```bash
+```console
 make
 ```
 
 It may take a few moments for the installation to complete, but once it does, you can verify that it was successful by using the command below:
 
-```bash
+```console
 sqlite3
 ```
 
