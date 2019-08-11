@@ -47,7 +47,8 @@ Before you attempt this Case Study, please verify that you have the following it
 
 ### Software
 
-1. [SQLite](https://sqlite.org/download.html)
+1. [SQLite (Command Line Tool)](https://sqlite.org/download.html)
+2. [SQLite Studio](https://sqlitestudio.pl/index.rvt)
 2. [Postman](https://www.getpostman.com/downloads/)
 3. [Spotify Music Player](https://www.spotify.com/us/download/other/)
 4. Terminal (with [Xcode Developer Tools](https://developer.apple.com/xcode/) Installed)
@@ -89,7 +90,40 @@ Since we need more data to make our database interesting, I socially-sourced a f
 
 ### Create A Relational Database For The Collection
 
-XXX
+Now that we have gathered the datasets that we will use for our database, we need to begin the process of importing them into our SQL application. All of this will be done at the command line level in our Terminal application. Launch terminal and initialize **SQLite Studio**.
+
+```console
+sqlite3
+```
+
+Now that SQLite is initialized, we need to import our datasets into it. This allows SQLite to convert our flat CSV files into tables that we can eventually import into a relational database. We have 4 files that we will work with and we have identified each of their paths as follows:
+
+* Eric's Record Collection: ```/Users/ericzrinsky/Downloads/Eric's Record Collection.csv```
+* Leigh’s Record Collection: ```/Users/ericzrinsky/Downloads/Leigh's Record Collection.csv```
+Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
+* Paul's Record Collection: ```/Users/ericzrinsky/Downloads/Paul's Record Collection.csv```
+
+In order to import these files, we need to first create a database to hold them. Within **Terminal**, enter the following command to navigate to a folder we previously created to host our Case Study project: 
+
+```console
+cd Documents/collection/database
+```
+
+Then, create a new database with the following command:
+
+```console
+sqlite3 record_collection.db;
+```
+
+Now that we have our database file created, we can exit the **Terminal** and launch **SQLiteStudio**. We need to add our new database file to the application. To do that, click **Database**—>**Add a database** in the navbar.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i30.png "Add A Database")
+
+Browse to the database file we created earlier, give your database a recognizable name (we used "Record Collection"), and then click the "OK" button.
+
+![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i31.png "Add A Database")
+
+Now, we need to import each of our .CSV files into **SQLiteStudio** so we can use them as tables in our database. To do that, click **Tools**—>**Import** in the navbar.
 
 [Back To Top](#top)
 
