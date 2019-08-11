@@ -374,39 +374,42 @@ Browse to the appropriate artist in the search results and then copy the alphanu
 
 Repeat this process until you have obtained all 30 of the Artist Codes.
 
-|Artist|Artist Code|
-|--- |--- |
-|Orchid|6tEdQbmg3bKE6IjmH5hO9d|
-|G.L.O.S.S.|2s4gtd98phMFZf7dMagxjU|
-|Royal Headache|01Jsi7Q2a1GdLvNShahaj1|
-|Czarface, MF Doom|4John8fJ3LKqFho0pselVr|
-|New Order|0yNLKJebCb8Aueb54LYya3|
-|St. Paul & The Broken Bones|4fXkvh05wFhuH77MfD4m9o|
-|The Cure|7bu3H8JO7d0UbMoVzbo70s|
-|The Civil Wars|6J7rw7NELJUCThPbAfyLIE|
-|Siouxsie & The Banshees|1n65zfwYIj5kKEtNgxUlWb|
-|The Impalers|5KL1Z3v4Q9zOMh74WEg7UT|
-|Hot Chip|37uLId6Z5ZXCx19vuruvv5|
-|Neil Young & Crazy Horse|6v8FB84lnmJs434UJf2Mrm|
-|Cryptic Slaughter|20ml1U2ibB2HPnPpWrJIKT|
-|The Devil Makes Three|63knPlGzLHTNDf1J78Fvte|
-|Glassjaw|7nt6S4klYHg4I7Q4lTSmc0|
-|The Specials|6xnvNmSzmeOE1bLKnYXKW3|
-|Built To Spill|3kbBWco9PZ5eSQsNScwG6U|
-|The Both|6nH7HjT8QPbZI2wnTjtJui|
-|Ostraca|12QhXwxSPz6xu42dDkDuCV|
-|Pestilence|6JcFn4PlXFuXmhRXpOpsan|
-|Snapcase|1egTA9mNgTwglPEQLmMd9W|
-|Boygenius|5BRORKnC2HD5xhgUyR31SH|
-|Preoccupations|2bs3QE2ZMBjmb0QTqAjCj3|
-|Fang|6vBFJ3JwYIzw3nRxy4vpbq|
-|Sleep|4Mt6w4tDGiPgV5q6JWPlrI|
-|Minor Threat|07PiZYrhllpSXtELkUxlrf|
-|Mandolin Orange|675tsBPpaZtqyiBwEf3ZEP|
-|The Pillows|6ilYV5oF8whllOnm4VZlYR|
-|Indecision|3WdlM6O8p5wxmx3p7hrPHM|
-|Minus The Bear|0YQBN02bmZvwGNrrWsg2sT|
+|Number|Artist|Artist Code|
+|--- |--- |--- |
+|1|Orchid|6tEdQbmg3bKE6IjmH5hO9d|
+|2|G.L.O.S.S.|2s4gtd98phMFZf7dMagxjU|
+|3|Royal Headache|01Jsi7Q2a1GdLvNShahaj1|
+|4|Czarface, MF Doom|4John8fJ3LKqFho0pselVr|
+|5|New Order|0yNLKJebCb8Aueb54LYya3|
+|6|St. Paul & The Broken Bones|4fXkvh05wFhuH77MfD4m9o|
+|7|The Cure|7bu3H8JO7d0UbMoVzbo70s|
+|8|The Civil Wars|6J7rw7NELJUCThPbAfyLIE|
+|9|Siouxsie & The Banshees|1n65zfwYIj5kKEtNgxUlWb|
+|10|The Impalers|5KL1Z3v4Q9zOMh74WEg7UT|
+|11|Hot Chip|37uLId6Z5ZXCx19vuruvv5|
+|12|Neil Young & Crazy Horse|6v8FB84lnmJs434UJf2Mrm|
+|13|Cryptic Slaughter|20ml1U2ibB2HPnPpWrJIKT|
+|14|The Devil Makes Three|63knPlGzLHTNDf1J78Fvte|
+|15|Glassjaw|7nt6S4klYHg4I7Q4lTSmc0|
+|16|The Specials|6xnvNmSzmeOE1bLKnYXKW3|
+|17|Built To Spill|3kbBWco9PZ5eSQsNScwG6U|
+|18|The Both|6nH7HjT8QPbZI2wnTjtJui|
+|19|Ostraca|12QhXwxSPz6xu42dDkDuCV|
+|20|Pestilence|6JcFn4PlXFuXmhRXpOpsan|
+|21|Snapcase|1egTA9mNgTwglPEQLmMd9W|
+|22|Boygenius|5BRORKnC2HD5xhgUyR31SH|
+|23|Preoccupations|2bs3QE2ZMBjmb0QTqAjCj3|
+|24|Fang|6vBFJ3JwYIzw3nRxy4vpbq|
+|25|Sleep|4Mt6w4tDGiPgV5q6JWPlrI|
+|26|Minor Threat|07PiZYrhllpSXtELkUxlrf|
+|27|Mandolin Orange|675tsBPpaZtqyiBwEf3ZEP|
+|28|The Pillows|6ilYV5oF8whllOnm4VZlYR|
+|29|Indecision|3WdlM6O8p5wxmx3p7hrPHM|
+|30|Minus The Bear|0YQBN02bmZvwGNrrWsg2sT|
 
+We'll eventually need to put all of the artist codes into an array of strings for a future step, so let's take care of that now:
+
+["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", "01Jsi7Q2a1GdLvNShahaj1", "4John8fJ3LKqFho0pselVr", "0yNLKJebCb8Aueb54LYya3", "4fXkvh05wFhuH77MfD4m9o", "7bu3H8JO7d0UbMoVzbo70s", "6J7rw7NELJUCThPbAfyLIE", "1n65zfwYIj5kKEtNgxUlWb", "5KL1Z3v4Q9zOMh74WEg7UT", "37uLId6Z5ZXCx19vuruvv5", "6v8FB84lnmJs434UJf2Mrm", "20ml1U2ibB2HPnPpWrJIKT", "63knPlGzLHTNDf1J78Fvte", "7nt6S4klYHg4I7Q4lTSmc0", "6xnvNmSzmeOE1bLKnYXKW3", "3kbBWco9PZ5eSQsNScwG6U", "6nH7HjT8QPbZI2wnTjtJui", "12QhXwxSPz6xu42dDkDuCV", "6JcFn4PlXFuXmhRXpOpsan", "1egTA9mNgTwglPEQLmMd9W", "5BRORKnC2HD5xhgUyR31SH", "2bs3QE2ZMBjmb0QTqAjCj3", "6vBFJ3JwYIzw3nRxy4vpbq", "4Mt6w4tDGiPgV5q6JWPlrI", "07PiZYrhllpSXtELkUxlrf", "675tsBPpaZtqyiBwEf3ZEP", "6ilYV5oF8whllOnm4VZlYR", "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 	
 We're now ready to start building our application to generate a Spotify playlist from the data we've obtained.	
 
@@ -529,45 +532,14 @@ Paste the "refresh_token" into the "refresh_token" textboxes and fill out the re
 
 * user_id: ```your spotify username```
 * country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and provides this number of tracks from an included artist in the playlist```
+* N: ```defaults to 5 and provides this number of tracks from an included artist in the playlist. We set ours to 1```
 * artists: ```List of seed artists that we generated in the [Lookup Artist Codes in Spotify](#lookup) section above```
 
-The table below includes the artist names and corresponding artist codes we generated from our database:
-
-<table>
-	<tr>
-		<th>Artist</th>
-		<th>Artist Code</th>
-	</tr>
-	<tr>
-		<td>RVIVR</td>
-		<td>1nfqdFH2ssg8oV0TYG2h6p</td>
-	</tr>
-	<tr>
-		<td>Microwave</td>
-		<td>7ptm7G8z8VVvwBnDq8fAmD</td>
-	</tr>
-	<tr>
-		<td>RJD2</td>
-		<td>1O3ZOjqFLEnbpZexcRjocn</td>
-	</tr>
-	<tr>
-		<td>Sleater-Kinney</td>
-		<td>4wLIbcoqmqI4WZHDiBxeCB</td>
-	</tr>
-	<tr>
-		<td>Rocket From The Tombs</td>
-		<td>5gjODPcOiAmqb2iPzt4cbo</td>
-	</tr>
-	<tr>
-		<td>Pavement</td>
-		<td>3inCNiUr4R6XQ3W43s9Aqi</td>	
-</table>			
 						
-All of the "Artist Codes" must be formatted in an array of strings:
+All of the "Artist Codes" must be formatted in an array of strings. We'll re-use our array from the "[Lookup Artist Codes in Spotify](#lookup) step above:
 
 ```
-["1nfqdFH2ssg8oV0TYG2h6p","7ptm7G8z8VVvwBnDq8fAmD","4wLIbcoqmqI4WZHDiBxeCB","5gjODPcOiAmqb2iPzt4cbo", "3inCNiUr4R6XQ3W43s9Aqi"]
+["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", "01Jsi7Q2a1GdLvNShahaj1", "4John8fJ3LKqFho0pselVr", "0yNLKJebCb8Aueb54LYya3", "4fXkvh05wFhuH77MfD4m9o", "7bu3H8JO7d0UbMoVzbo70s", "6J7rw7NELJUCThPbAfyLIE", "1n65zfwYIj5kKEtNgxUlWb", "5KL1Z3v4Q9zOMh74WEg7UT", "37uLId6Z5ZXCx19vuruvv5", "6v8FB84lnmJs434UJf2Mrm", "20ml1U2ibB2HPnPpWrJIKT", "63knPlGzLHTNDf1J78Fvte", "7nt6S4klYHg4I7Q4lTSmc0", "6xnvNmSzmeOE1bLKnYXKW3", "3kbBWco9PZ5eSQsNScwG6U", "6nH7HjT8QPbZI2wnTjtJui", "12QhXwxSPz6xu42dDkDuCV", "6JcFn4PlXFuXmhRXpOpsan", "1egTA9mNgTwglPEQLmMd9W", "5BRORKnC2HD5xhgUyR31SH", "2bs3QE2ZMBjmb0QTqAjCj3", "6vBFJ3JwYIzw3nRxy4vpbq", "4Mt6w4tDGiPgV5q6JWPlrI", "07PiZYrhllpSXtELkUxlrf", "675tsBPpaZtqyiBwEf3ZEP", "6ilYV5oF8whllOnm4VZlYR", "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 ```
 
 Paste the array of strings into the "artists"  textbox and then click the "Update" button.
