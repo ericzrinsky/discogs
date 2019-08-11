@@ -72,12 +72,20 @@ Before you attempt this Case Study, please verify that you have the following it
 
 ### Gather Data Resources
 
-Before we can create a relational database, we need to gather datasets (or tables) that will populate it. To begin, we'll start with my own personal record collection logged in [Discogs](https://www.discogs.com/user/ericmz23/collection).
+Before we can create a relational database, we need to gather datasets (or tables) that will populate it. To begin, we'll start with my own personal record collection logged in [Discogs](https://www.discogs.com/user/ericmz23/collection). Click the "Export" link in the navbar.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i3.png "Discogs")
 
+Click the "Collection" radio button and then click the "Request Data Export" button.
+
+![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i28.png "Collection")
+
+Since we need more data to make our database interesting, I socially-sourced a few more **Discogs** record collections from friends on Facebook.
+
+![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i29.png "Collection")
 
 [Back To Top](#top)
+
 <a name="create"></a>
 
 ### Create A Relational Database For The Collection
