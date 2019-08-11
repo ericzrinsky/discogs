@@ -100,7 +100,7 @@ Now that SQLite is initialized, we need to import our datasets into it. This all
 
 * Eric's Record Collection: ```/Users/ericzrinsky/Downloads/Eric's Record Collection.csv```
 * Leigh’s Record Collection: ```/Users/ericzrinsky/Downloads/Leigh's Record Collection.csv```
-Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
+* Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
 * Paul's Record Collection: ```/Users/ericzrinsky/Downloads/Paul's Record Collection.csv```
 
 In order to import these files, we need to first create a database to hold them. Within **Terminal**, enter the following command to navigate to a folder we previously created to host our Case Study project: 
