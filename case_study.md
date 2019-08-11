@@ -194,13 +194,11 @@ When you're finished, click the "Request Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i19.png "Get New Access Token")
 
-<p class="callout warning">Please note, the "Client Secret" textbox is blurred in the screenshot above to protect the security of the application.</p>
-
-You may be asked to log into your Spotify account in the next step. Provide your Spotify username and password to login in. In the new modal, scroll to the bottom and then click the "Use Token" button.
+You may be asked to log into your Spotify account in the next step. Provide your Spotify username and password to login in. In the new modal, scroll to the bottom, copy the "refresh_token" and then click the "Use Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i20.png "Get New Access Token") 
 
-Copy the "Access Token" from the textbox and then click the "Environment Quick Look" button.
+Click the "Environment Quick Look" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i21.png "Environment Quick Look") 
 
@@ -208,7 +206,7 @@ Click the "Edit" button next to the "SpotifyGenV1.template" header.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i22.png "Environment Quick Look") 
 
-Paste the "Access Token" into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
+Paste the "refresh_token" into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
 
 * user_id: ```your spotify username```
 * country_code: ``country code in ISO 3166-1 format``
@@ -250,7 +248,7 @@ The table below includes the artist names and corresponding artist codes we gene
 All of the "Artist Codes" must be formatted in an array of strings:
 
 ```
-["1nfqdFH2ssg8oV0TYG2h6p","7ptm7G8z8VVvwBnDq8fAmD","4wLIbcoqmqI4WZHDiBxeCB","5gjODPcOiAmqb2iPzt4cbo", 3inCNiUr4R6XQ3W43s9Aqi"]
+["1nfqdFH2ssg8oV0TYG2h6p","7ptm7G8z8VVvwBnDq8fAmD","4wLIbcoqmqI4WZHDiBxeCB","5gjODPcOiAmqb2iPzt4cbo", "3inCNiUr4R6XQ3W43s9Aqi"]
 ```
 
 Paste the array of strings into the "artists"  textbox and then click the "Update" button.
@@ -263,7 +261,15 @@ Click the "Runner" button to launch the "Collection Runner."
 
 Click "Spotify Playlist Generator" under "All Collections," select "SpotifyGenV1.template" from the "Environment" drop-down, and then click the "Start Run" button. 
 
-![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i25.png "Start Run") 
+![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i25.png "Start Run")
+
+If your collection runs were successful, "Collection Runner" will display 12 passed requests.
+
+![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i26.png "Success")
+
+Launch **Spotify** and at the top of your "Playlists" list you should also see the newly generated playlist.
+
+![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i27.png "New Playlist")
 
 [Back To Top](#top)
 <a name="appendix"></a>
@@ -325,8 +331,8 @@ sqlite3
 
 ### Enjoy
 
-You can listen to the playlist file that I created during this case study on Spotify with the link below:
+You can listen to the playlists that I created during this case study on Spotify with the links below:
 
-* 
+* [RVIVR Mix](https://open.spotify.com/playlist/1ojzxWARZkifrZXkPrrnsE?si=Bua9OhB5QOuj7uf6kYHtkw)
 
 [Back To Top](#top)
