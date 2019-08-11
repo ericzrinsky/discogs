@@ -19,7 +19,7 @@ As an avid record collector, I find myself curating my musical tastes carefullyâ
 * [Requirements](#requirements)
 	* [Memberships](membership)
 	* [Software](software)
-	* [Files](files)
+	* [Files](#files)
 * [Read The Doc](#read)
 	* [Gather Data Resources](#gather)
 	* [Create A Relational Database For The Collection](#create)
