@@ -42,7 +42,6 @@ Before you attempt this Case Study, please verify that you have the following it
 1. [Discogs](https://www.discogs.com)
 2. [Spotify](https://www.spotify.com/us/)
 3. [Spotify For Developer](https://developer.spotify.com/dashboard)
-	4. Note, this is the same account, but with additional permissions for accessing the Spotify API
 
 <a name="software"></a>
 
