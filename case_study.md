@@ -378,7 +378,7 @@ ORDER  BY artist;
 
 If the request was successful, you should see 294 rows contained within the "new_artists" table. We've eliminated 588 rows with our query, but 294 is still too large for our purposes. 
 
-Since the results of the previous query are now store within a table (new_artists), we can run one more additional query to limit the results to 30 entries and randomize the results. This allows us to generate a manageable and differentiated list of artists with each new query.
+Since the results of the previous query are now stored within a table (new_artists), we can run one more additional query to limit the results to 30 entries and randomize the results. This allows us to generate a manageable and differentiated list of artists with each new query.
 
 Paste the code below into the "SQL Editor":
 <a name="final"></a>
