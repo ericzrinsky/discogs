@@ -1,5 +1,5 @@
 
-# Case Study: Generating a Spotify Playlist from An Aggregated Database of Vinyl Records
+# Generate a Spotify Playlist From Aggregated Affinity Data Stored In a Relational Database
 
 <a name="top"></a>
 
@@ -7,11 +7,34 @@
 
 ## Overview
 
-Modern music listeners often find themselves jumping back and forth between musical-mediums in a single day. This may entail playing a CD in the car, listening to music on Spotify while at work, or playing vinyl records on a turntable at home. 
+Modern music listeners often find themselves jumping back and forth between multiple mediums in a single day. This may entail playing terrestrial or satellite radio in the car, listening to music on a streaming service like **Spotify** while at work, or playing vinyl records on a turntable at home. 
 
-With their “Discover Weekly” playlist, Spotify does an adequate job of exposing listeners to music they may or may not be familiar with based on their listening history and implied musical tastes; however, the playlist Spotify generates with their algorithms tends to be on the shorter side and can be easily consumed in a single workday. This leaves listeners waiting an entire week for Spotify to generate a new playlist.
+**Spotify's** “Discover Weekly” feature  does an adequate job of exposing listeners to music they may be unfamiliar with based on their listening history and implied musical tastes. This approach achieves limited success. 
 
-As an avid record collector, I find myself curating my musical tastes carefully—vinyl isn’t cheap anymore! I can only assume that most collectors (unless they’re working with a near limitless amount of money) take the same prudent approach to curating their collection as I do.
+The generated playlist often include music that the listener is already familiar with or listens to on a regular basis. If you regularly listen to music that spans the same or similar genres, you may find lots of repetition in your “Discover Weekly” playlist. After all, there are only so many bands making each type of music and **Spotify's** algorithms may not even realize a particular artist is related. 
+
+![Overview](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i45.png "Discover Weekly")
+
+In addition, the playlist itself is short enough (typically, around 2 hours) that it can be consumed in a single workday. This may leave listeners waiting an entire week for **Spotify** to generate the next playlist to get their new-music fix. Even worse, the new "Discover Weekly" playlists often miss the mark entirely and fail to engage a listener at all.
+
+I began to think about my own musical tastes and how different mediums affect my listening behavior and my preferences. As an avid record collector, I find myself curating my collection carefully—vinyl isn’t cheap anymore! With that in mind, I assume that this type of careful purchase behavior holds true for most collectors. Very few people spend $20-30 dollars for a new record unless it's something they really want.
+
+I took this thought one step further. People share music from **Spotify** all the time, but because it's "free" and there is a low barrier to entry, it becomes almost a reflex. Sometimes the music they share is engaging and well worth the listen. Other times, the music is nothing special or so prevalent that it seems like everyone has heard it. 
+
+How much of this lackluster sharing is a result of over saturation and over exposure **Spotify's** algorithmic approach? If there was an easy way to capture the items in someone's record collection and use that data to inform **Spotify** decisions, it might help to generate playlists that hit the mark more often.
+
+I set to the task of testing this hypothesis.
+
+### Goals
+
+This project will attempt to accomplish the following goals:
+
+1. Socially-source vinyl record affinity data from other music aficionados
+2. Assemble a relational database of artist and album information 
+3. Use SQL queries to interact with with the database to pull out the information that I need
+3. Create a web-application that interacts with **Spotify's** REST API with aid of **Postman** by consulting <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide
+4. Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
+5. Document the entire process in a project guide that is thorough, but easy to follow
 
 ## Contents
 
@@ -34,7 +57,7 @@ As an avid record collector, I find myself curating my musical tastes carefully�
 
 ## Requirements 
 
-Before you attempt this Case Study, please verify that you have the following items:
+Before you attempt to build this project, please verify that you have the following items:
 
 <a name="memberships"></a>
 
@@ -42,7 +65,7 @@ Before you attempt this Case Study, please verify that you have the following it
 
 1. [Discogs](https://www.discogs.com)
 2. [Spotify](https://www.spotify.com/us/)
-3. [Spotify For Developer](https://developer.spotify.com/dashboard)
+3. [Spotify For Developers](https://developer.spotify.com/dashboard)
 
 <a name="software"></a>
 
@@ -73,7 +96,7 @@ Before you attempt this Case Study, please verify that you have the following it
 
 ### Gather Data Resources
 
-Before we can create a relational database, we need to gather datasets (or tables) that will populate it. To begin, we'll start with my own personal record collection logged in [Discogs](https://www.discogs.com/user/ericmz23/collection). Click the "Export" link in the navbar.
+In order to construct a relational database, we need datasets (or tables) to populate it. It may seem counter-intuitive, but to generate a playlist that exposes me to music I'm unlikely to know, I determined that I needed to start with my own musical affinity data. Plus, this was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. To export a personal collection on Discogs, log in  and click the "Export" link in the navbar.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i3.png "Discogs")
 
@@ -81,9 +104,13 @@ Click the "Collection" radio button and then click the "Request Data Export" but
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i28.png "Collection")
 
-Since we need more data to make our database interesting, I socially-sourced a few more **Discogs** record collections from friends on Facebook.
+**Discogs** emails a link to the .CSV file when it'ss ready to download. 
+
+With my own collection data in-hand, I needed to gather additional collections from friends who also log their records on **Discogs**. To do this, I sent out a plea on Facebook.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i29.png "Collection")
+
+Within a few moments, I received three additional datasets from friends and I was ready to build a relational database.
 
 [Back To Top](#top)
 
@@ -91,22 +118,18 @@ Since we need more data to make our database interesting, I socially-sourced a f
 
 ### Create A Relational Database For The Collection
 
-Now that we have gathered the datasets that we will use for our database, we need to begin the process of importing them into our **SQLite Studio**. 
+Before we can import anything, we need a database and that means we must first generate a database file. We'll do that in the the **Terminal** with the help of the **SQLite** command line tool. Please note, if you haven't already installed the **SQLite** command line tool, you need to do that first. Detailed instructions are available in the [Appendix](#install) of this guide.
 
-Before we can import any files, however, we need a database to hold them. That means we must first generate a database file. We will do that in the command line using the **Terminal** and the **SQLite** command line tool. Please note, if you have not already installed the **SQLite** command line tool, you need to do that first. Detailed instructions are available in the [Appendix](#install).
-
-If you have the **SQLite** command line tool installed, you can proceed with the directions below.
-
-Launch the **Terminal** and initialize **SQLite Studio**.
+Launch the **Terminal** and initialize **SQLite** with the command below.
 
 ```console
 sqlite3
 ```
 
-Navigate to a folder where you'd like to host your database file. We will use the command below to navigate to the folder we created specifically for this project: 
+Create a project repository within your "Documents" folder (or some other folder that you can easily find) first. Once it's created, use the command below (by filling in the appropriate path to the folder you created) to navigate to the project in the **Terminal**: 
 
 ```console
-cd Documents/collection/database
+cd Documents/xxFolderxx/xxDatabaseFolderxx
 ```
 
 Next, create a new database with the following command:
@@ -115,7 +138,7 @@ Next, create a new database with the following command:
 sqlite3 record_collection.db;
 ```
 
-Now that we have our database file created, we can exit the **Terminal** and launch **SQLiteStudio**. We need to add our new database file to the application. To do that, click **Database** —> **Add a database** in the navbar.
+The database file is now ready and we can exit the **Terminal** and launch **SQLiteStudio**. From here, We need to add our new database file ("record_collection.db") to **SQLiteStudio**. To do that, click **Database** —> **Add a database** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i30.png "Add A Database")
 
@@ -130,7 +153,7 @@ Verify that you have all 4 record collection .CSV files. Those files include:
 * Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
 * Paul's Record Collection: ```/Users/ericzrinsky/Downloads/Paul's Record Collection.csv```
 
-We need to import each of them into **SQLiteStudio** so we can use them as tables in our database.
+We'll take the steps below to import each of them into **SQLiteStudio** for use in our database.
  
 1. Double-click the "Record Collection" database in the "Databases" panel
 2. Click "Tables" under that database to highlight it
@@ -138,11 +161,13 @@ We need to import each of them into **SQLiteStudio** so we can use them as table
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i32.png "Import Table")
 
-We'll start with the .CSV file named "Eric's Record Collection.csv" and we will repeat this process for the 3 other files as well. 
+Start with the .CSV file named "Eric's Record Collection.csv." 
 
-Give the table a name (we used Eric's Record Collection for the first file), and then click the "Continue" button.
+In SQL, datasets are organized in "tables." Thus, any file that we import will be referred to as a table. Give the table for "Eric's Record Collection" a name. I used "eric_records" for the first file and followed the same schema for each subsequent file. Then, click the "Continue" button.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i33.png "Import Table")
+
+The subsequent screen allows you to customize exactly how **SQLiteStudio** will import and process your data. Follow the steps below to configure your new table.
 
 1. Browse to file for the first dataset on your computer. 
 2. Verify that it says "CSV" in "Data source type" drop-down 
@@ -152,7 +177,13 @@ Give the table a name (we used Eric's Record Collection for the first file), and
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i34.png "Import Table")
 
-Now that we have imported all file tables into our database, we need to define the "Data type" for each column. Use the "data types" below for the columns in the "Eric's Record Collection" table and then repeat this process for the remaining 3 tables.
+Repeat this process with the remaining 3 .CSV files:
+
+* "Leigh’s Record Collection" —> "leigh_records"
+* "Steve's Record Collection" —> "steve_records"
+* "Paul's Record Collection" —> "paul_records"
+
+Once you're finished with the import process, it's time to define the "Data type" for each column in the tables. Use the "data types" below for the columns in the "eric_records" table and then repeat this process for the 3 remaining tables.
 
 <table>
 	<tr>
@@ -225,11 +256,11 @@ Now that we have imported all file tables into our database, we need to define t
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i35.png "Data Type")
 
-Now that we have our data in place, it's time to start manipulating it. To do that, we need to launch the "SQL Editor" in **SQLiteStudio**. Click **Tools**—>**Open SQL Editor** in the navbar.
+Now that the data in place and the columns are appropriately defined, it's time to experiment with the database. To do that, launch the "SQL Editor" in **SQLiteStudio**. Click **Tools** —> **Open SQL Editor** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i36.png "Open SQL Editor")
 
-Before we run any complicated queries in the "SQL Editor," we should first verify that we can access all of the data in our tables. We'll do that with a few basic INNER JOINs. 
+Before we run any complicated queries in the "SQL Editor," we should first verify that we can readily access all of the data in our tables. We'll do that with a few basic UNION parameters. 
 
 Paste the code below into the "SQL Editor":
 
@@ -252,11 +283,11 @@ FROM   paul_records AS p
 ORDER  BY artist; 
 ```
 
-If your query was successful, you should see "Total rows loaded: 1462" at the top of your results.
+If the query was successful, you should see "1462" for the "Total rows loaded" at the top of your results and you should see each row with data for the "Artist" and "Title" columns.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i37.png "UNION Query - All")
 
-Let's tweak our query a little to only include artists in the results since that is what we will need to generate our playlist in Spotify.
+Let's tweak the query to only include artists in the results since that's what we'll need in order to generate our playlists in **Spotify**.
 
 Paste the code below into the "SQL Editor":
 
@@ -275,13 +306,17 @@ FROM   paul_records AS p
 ORDER  BY artist; 
 ```
 
-If your query was successful, you should now see "Total rows loaded: 882" at the top of your results.
+If your query was successful, you should now see "882" for the "Total rows loaded:" since it is likely that some artists had more than one album (or "Title") associated with them. Your results should also only display one column—"Artist."
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i38.png "UNION Query - Artists")
 
-This gets a us a little bit closer, but 882 is still a bit too many artists for us to work with for a Spotify playlist. 
+This gets a us a little bit closer, but 882 is still a bit too unwieldy for us to work with for a **Spotify** playlist. 
 
-For the end result, I'd like to generate a playlist that introduces me to all new music and excludes any artists that are contained within the "Eric's Record Collection" table. In order to do that, we will create a new table called "new_artists" that will store the results from each table comparison. 
+Let's dig into of the goals for this project: 
+
+* Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
+
+In order to accomplish that result, we need to compare the "Artists" column in "eric_records" to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually, exclude the artists found in both the "eric_records" table and comparison table, and then add those results to a new table called "new_artists." It sounds confusing, but it will make more sense after we run our SQL queries. 
 
 Right click "Tables" in the "Databases" panel and then click "Create A Table."
 
@@ -291,13 +326,17 @@ Type "new_artists" in the "Table name:" textbox and then click the "Add column" 
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i40.png "Add a column")
 
+Next, we'll configure the single column for the "new_artists" table with the instructions below:
+
 1. Type "artist" in the "Column name:" textbox. 
 2. Type "STRING" in the "Data type:" checkbox.
 3. Click the "OK" button.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i41.png "Data Type")
 
-Our table is now ready to accept data. Return to the "SQL Editor." We will tweak our code to swap a "UNION" parameters for an "EXCEPT" parameter to exclude the artists that exist in the "Eric's Record Collection" table. We'll repeat this process with each record collection table and insert the new results into our "new_artists" table.
+The "new_artists" table is now ready to accept data. 
+
+Return to the "SQL Editor." Tweak the code to include an "EXCEPT" parameter that evaluates when an artist name in the "Artist" column is found in the "eric_records" table and comparison table. This comparison and exclusion process repeats with each subsequent table. To make things a little more interesting, we will also add a "WHERE" parameter to each comparison to only consider vinyl records (and their associated artist) released after 2010. Finally, we'll insert all of the results into the "new_artists" table.
 
 Paste the code below into the "SQL Editor":
 
@@ -335,11 +374,12 @@ WHERE  released > 2010
 ORDER  BY artist; 
 ```
 
-If our request was successful, we should now have 294 rows in the "new_artists" table. That number is still a bit too unwieldy for generating a playlist, so let's take our query one step further—let's limit results to 30 entries and to keep things interesting, let's randomize the results we get. This will allow us to generate a new list of artists with one query any time we want to create new  playlist
+If the request was successful, you should see 294 rows contained within the "new_artists" table. We've eliminated 588 rows with our query, but 294 is still a bit too unwieldy for our purposes. 
+
+Since the results of the previous query are now contained within a table (new_artists), we can run one more additional query to limit results to 30 entries and randomize the results. This will allow us to generate a manageable and differentiated list of artists with each new query.
 
 Paste the code below into the "SQL Editor":
-
-
+<a name="final"></a>
 ```SQL
 SELECT DISTINCT artist 
 FROM   new_artists 
@@ -347,7 +387,7 @@ ORDER  BY Random()
 LIMIT  30; 
 ```
 
-**SQLiteStudio** returned the following artists to us for our query:
+**SQLiteStudio** returned the following artists with the query:
 
 ```
 Orchid, G.L.O.S.S., Royal Headache, 
@@ -362,7 +402,7 @@ Snapcase, Boygenius, Preoccupations,
 Fang, Sleep, Minor Threat, Mandolin Orange
 ```
 
-We're now ready to gather Spotify Artist codes for each artist.
+Now that we have our list of artists, we're ready to gather "Spotify Artist" codes for use in our calls to the **Spotify** API.
 
 [Back To Top](#top)
 
@@ -370,19 +410,19 @@ We're now ready to gather Spotify Artist codes for each artist.
 
 ### Look Up Artist Codes in Spotify
 
-There isn't an easy way to gather "Artist Codes" within the mobile or desktop versions of the Spotify application; however, we can get what we need if we use the web-application. Navigate to <a href="https://open.spotify.com">https://open.spotify.com</a> and log in.
+There isn't an easy way to gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i42.png "Spotify Web Application")
 
-Click "Search" and type the name of the artist in the "Start typing..." textbox.
+Click "Search" and type the name of the first artist in the "Start typing..." textbox.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i43.png "Spotify Web Application")
 
-Browse to the appropriate artist in the search results and then copy the alphanumeric artist code at the end of the URL in the address bar.
+Browse to the appropriate artist listing in the search results and then copy the alphanumeric artist code at the end of the URL in the address bar.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i44.png "Artist Code")
 
-Repeat this process until you have obtained all 30 of the Artist Codes.
+Repeat this process until you have obtained all 30 of the "Artist Codes."
 
 |Number|Artist|Artist Code|
 |--- |--- |--- |
@@ -417,7 +457,7 @@ Repeat this process until you have obtained all 30 of the Artist Codes.
 |29|Indecision|3WdlM6O8p5wxmx3p7hrPHM|
 |30|Minus The Bear|0YQBN02bmZvwGNrrWsg2sT|
 
-We'll eventually need to put all of the artist codes into an array of strings for a future step, so let's take care of that now:
+We'll need to insert all of the "Artist Codes" into an array of strings for a future step, so let's take care of that now:
 
 ```
 ["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", 
@@ -437,7 +477,7 @@ We'll eventually need to put all of the artist codes into an array of strings fo
 "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 ```
 	
-We're now ready to start building our application to generate a Spotify playlist from the data we've obtained.	
+We've got what we need to build our application that generates a **Spotify** playlist from the data we've obtained.	
 
 [Back To Top](#top)
 
@@ -446,31 +486,33 @@ We're now ready to start building our application to generate a Spotify playlist
 
 ### Register A Client ID For A Spotify Application 
 
-After you have gained access to the Spotify for Developers portal, navigate to the dashboard at the following address:
+If you haven't already done so, register for access to the [Spotify For Developers](https://developer.spotify.com/dashboard) Portal. After you have gained access, navigate to the dashboard at the following address:
 
 ```
 https://developer.spotify.com/dashboard/applications
 ```
 
-Since this is the first time we've accessed the Spotify For Developers portal, we need to first create a "Client ID" for the web application we will build in this step. Click the "Create A Client ID Button."
+We need to create a "Client ID" for the web application we will build in this step. Click the "Create A Client ID Button."
 
 ![Spotify For Developers - Dashboard](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i4.png "Create A Client ID")
 
-Fill out the text boxes for "Step 1." In this step, we provide Spotify with details about our application and what it will do. When you're finished, click the "Next" button.
+Fill out the textboxes for "Step 1." In this step, provide **Spotify** with details about the application and what it will do. When you're finished, click the "Next" button.
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i5.png "Step 1")
 
-Since we are not developing this application to sell it, we can click the "No" button in "Step 2."
+Since this is not a commercial application, click the "No" button in "Step 2."
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i6.png "Step 2")
 
-After reading the "Developer Terms of Service," "Branding Guidelines," and "Privacy Policy," click the checkboxes next to each term and then click the "Submit" button.
+After reading the "Developer Terms of Service," "Branding Guidelines," and "Privacy Policy," click the checkboxes next to each item and then click the "Submit" button.
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i7.png "Step 3")
 
-We have no successfully created our "Client ID" and our application is registered with Spotify.
+We have now created our "Client ID" and the application is registered with **Spotify**.
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i8.png "Registration Complete")
+
+It's time to build.
 
 [Back To Top](#top)
 
@@ -478,11 +520,11 @@ We have no successfully created our "Client ID" and our application is registere
 
 ### Use Postman to Access the Spotify API
 
-Now that our application is registered with the **Spotify For Developers Portal**, we have the permissions we need in place to access the Spotify API. 
+Now that the application is registered with the **Spotify For Developers Portal**, we have the permissions in place to access the **Spotify** API. 
 
-<p class="callout info">Please note, <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a> created a guide for generating playlists with **Postman**. Though his instructions provide a good starting point, they are often light on details and assume as the basis for our application, but with some tweaks that we will implement for our specific use case. You can access the original version of that guide  on the <a href="https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection"><b>Postman Blog</b></a></p>
+Please note, the steps that follow were informed by <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide for generating **Spotify** playlists with **Postman**. Though his instructions provide a good starting point, they are somewhat light on details and assume a more advanced understanding of REST APIs in general. You can access the original version of that guide on the <a href="https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection"><b>Postman Blog</b></a></p>
 
-In a new tab (leave the **Spotify for Developers** open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)**. and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
+In a new tab (leave the window for the **Spotify for Developers** Portal open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)** and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
 
 ![Postman Blog](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i9.png "Open In Postman")
 
@@ -490,7 +532,7 @@ Launch **Postman** and then click the drop-down for "Environments." Then, click 
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i10.png "Environment Selection")
 
-Then, click the "Environment Quick Look" button.
+Click the "Environment Quick Look" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i11.png "Environment Quick Look")
 
@@ -498,11 +540,11 @@ In the new window, click the "Edit" link in the "SpotifyGenV1.template" header.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i12.png "Edit")
 
-Return to the **Spotify For Developers Portal** and copy the "Client ID" and "Client Secret" and paste them it into their respective fields in **Postman**. Then, click the "Update" button.
+Return to the **Spotify For Developers Portal**, copy the "Client ID" and "Client Secret," and paste them into their respective fields in **Postman**. Then, click the "Update" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i13.png "Manage Environments")
 
-<p class="callout warning">Please note, the "Client Secret" text-boxes are blurred in the screenshot above to protect the security of the application.</p>
+Please note, the "Client Secret" text-boxes are blurred in the screenshot above to protect the security of the application.
 
 Return to the **Spotify For Developers Portal** once more and then click the "Edit Settings" button.
 
@@ -516,17 +558,13 @@ https://www.getpostman.com/oauth2/callback
 
 ![Spotify For Developers](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i15.png "Edit Settings")
 
-Return to **Postman** and click the "View more actions (...)" button next to the "Spotify Playlist Generator" collection and then click "Add Request."
+Return to **Postman** and click the "Get Auth Key" under the "Spotify Playlist Generator" collection and then click the "Authorization" tab. 
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i16.png "New Request")
 
-Give your request a name and a quick description and then click the "Save to Spotify Playlist Generator" button.
+Click "OAuth 2.0" from the "Type" drop-down and then click the "Generate New Access Token" button.
 
-![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i17.png "New Request")
-
-Click the "Authorization" tab, click "OAuth 2.0" from the "Type" drop-down, and then click the "Generate New Access Token" button.
-
-![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i18.png "New Access Token")
+![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i17.png "New Access Token")
 
 Fill in the details below for each textbox in the "Get New Access Token" modal:
 
@@ -542,7 +580,7 @@ When you're finished, click the "Request Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i19.png "Get New Access Token")
 
-You may be asked to log into your Spotify account in the next step. Provide your Spotify username and password to login in. In the new modal, scroll to the bottom, copy the "refresh_token" and then click the "Use Token" button.
+You may be asked to log into your **Spotify** account. Provide your **Spotify** username and password to login in. In the new modal, scroll to the bottom, copy the "refresh_token" and then click the "Use Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i20.png "Get New Access Token") 
 
@@ -554,15 +592,14 @@ Click the "Edit" button next to the "SpotifyGenV1.template" header.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i22.png "Environment Quick Look") 
 
-Paste the "refresh_token" into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
+Paste the token in your clipboard into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
 
-* user_id: ```your spotify username```
+* user_id: ```your Spotify username```
 * country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and provides this number of tracks from a related artist.```
-* artists: ```List of seed artists that we generated in the [Lookup Artist Codes in Spotify](#lookup) section above```
-
+* N: ```defaults to 5 and provides this number of tracks from each related artist.```
+* artists: ```List of artists generated in an array of strings. One is selected at random as the key for the generated playlist```
 						
-All of the "Artist Codes" must be formatted in an array of strings. We'll re-use our array from the "[Lookup Artist Codes in Spotify](#lookup) step above:
+We'll re-use our array from the "[Lookup Artist Codes in Spotify](#lookup) step above to populate our request:
 
 ```
 ["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", 
@@ -582,7 +619,7 @@ All of the "Artist Codes" must be formatted in an array of strings. We'll re-use
 "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 ```
 
-Paste the array of strings into the "artists"  textbox and then click the "Update" button.
+Paste it into the "artists" textbox and then click the "Update" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i23.png "Update Environment") 
 
@@ -594,7 +631,7 @@ Click "Spotify Playlist Generator" under "All Collections," select "SpotifyGenV1
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i25.png "Start Run")
 
-If your collection runs were successful, "Collection Runner" will display all passed requests and no failed requests)
+"Collection Runner" should display results where all requests passed and no requests failed.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i26.png "Success")
 
@@ -602,7 +639,10 @@ Launch **Spotify** and at the top of your "Playlists" list you should also see t
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i27.png "New Playlist")
 
+Any time you'd like to generate a new playlist and discover new artists, launch "Collection Runner" and replay the "Spotify Playlist Generator" collection. When the results aren't interesting or unique any longer, swap out artist codes with new batches of artists generated from the final [query of the "Record Collection" database](#final) as needed.
+
 [Back To Top](#top)
+
 <a name="appendix"></a>
 
 ## Appendix
@@ -612,9 +652,9 @@ Launch **Spotify** and at the top of your "Playlists" list you should also see t
 
 ### Install SQLite
 
-Although we did most of our SQL work in **SQLiteStudio**, we used the **SQLite** tool to initialize our database file. There are many SQL application options available, but SQLite is free, easy to use, and lightweight. 
+Although we did most of the SQL work in **SQLiteStudio**, we used the **SQLite** command line tool to initialize our database file. There are many SQL application options available, but **SQLite** is free, easy to use, and lightweight. 
 
-Please note, you will also need XCode Command Line Tools Installed on your computer to instal SQLite. If you don't have that installed, you can enter the following command in **Terminal** to install it:
+Please note, you will also need XCode Command Line Tools Installed on your computer to instal **SQLite**. If you don't have that installed, you can enter the following command in **Terminal** to install it:
 
 ```
 xcode-select --install
@@ -632,7 +672,7 @@ Within the **Terminal**, enter the following code to access your "Downloads" fol
 cd Downloads/
 ```
 
-Next, we need to access the folder for the file we just unzipped. In this instance, the folder is named <code>sqlite-autoconf-3290000</code>. Paste the command below into the **Terminal** to change the directory. Remember to swap out the file name if your's doesn't match.
+Next, access the folder for the file you just unzipped. In this instance, the folder is named <code>sqlite-autoconf-3290000</code>. Paste the command below into the **Terminal** to change the directory. Remember to swap out the file name if your's doesn't match.
 
 ```console
 cd sqlite-autoconf-3290000
@@ -661,11 +701,12 @@ sqlite3
 The **SQLite** command line tool is now installed and ready to generate database files.
 
 [Back To Top](#top)
+
 <a name="enjoy"></a>
 
 ### Enjoy
 
-You can listen to the playlists that I generated during this project on Spotify with the links below:
+You can listen to the playlists that I generated for this project on **Spotify** with the links below:
 
 * [Built To Spill Mix](https://open.spotify.com/playlist/3pdKPOX2FafbulICMm6I0m?si=wfqA9Js1RdeLLmvFkN_HIQ) - Indie Rock
 * [New Order Mix](https://open.spotify.com/playlist/0DOwHUcfuubIIJdlH1Xi0o?si=rG2a0yDuRAeIxNzpyfT74Q) - New Wave
@@ -684,6 +725,6 @@ You can listen to the playlists that I generated during this project on Spotify 
 
 ### Thanks
 
-Huge amount of thanks go out to my good friends Stephen Dyer, Paul Caddaciottu, and Leigh Stuckey who quickly volunteered to help me out and provided me with their record collection data.
+Many thanks go out to my good friends (Stephen Dyer, Paul Caddaciottu, and Leigh Stuckey) who quickly volunteered to help me and provided their record collection data for my experimentation.
 
 [Back To Top](#top)
