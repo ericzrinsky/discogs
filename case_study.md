@@ -11,7 +11,7 @@ Modern music listeners often find themselves jumping back and forth between mult
 
 **Spotify's** “Discover Weekly” feature  does an adequate job of exposing listeners to music they may be unfamiliar with based on their listening history and implied musical tastes. This approach achieves limited success. 
 
-The generated playlist often include music that the listener already knows. If you regularly listen to music that spans the same or similar genres, you may find lots of repetition in your “Discover Weekly” playlist. After all, there are only so many bands making each type of music and **Spotify's** algorithms may not even realize a particular artist is related. 
+The generated playlist often includes music that the listener already knows. If you regularly listen to music that spans the same or similar genres, you may find lots of repetition in your “Discover Weekly” playlist. After all, there are only so many bands making each type of music and **Spotify's** algorithms may not even realize a particular artist is related. 
 
 ![Overview](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i45.png "Discover Weekly")
 
