@@ -543,13 +543,13 @@ In the new window, click the "Edit" link in the "SpotifyGenV1.template" header.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i12.png "Edit")
 
-Return to the **Spotify For Developers Portal**, copy the "Client ID" and "Client Secret," and paste them into their respective fields in **Postman**. Then, click the "Update" button.
+Return to the **Spotify For Developers Portal**, copy the "Client ID" and "Client Secret" and paste them into their respective fields in **Postman**. Then, click the "Update" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i13.png "Manage Environments")
 
 Please note, the "Client Secret" text-boxes are blurred in the screenshot above to protect the security of the application.
 
-Return to the **Spotify For Developers Portal** once more and then click the "Edit Settings" button.
+Return to the **Spotify For Developers Portal** once more and click the "Edit Settings" button.
 
 ![Spotify For Developers](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i14.png "Edit Settings")
 
@@ -595,14 +595,14 @@ Click the "Edit" button next to the "SpotifyGenV1.template" header.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i22.png "Environment Quick Look") 
 
-Paste the token in your clipboard into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
+Paste the token from your clipboard into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
 
 * user_id: ```your Spotify username```
 * country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and provides this number of tracks from each related artist.```
-* artists: ```List of artists generated in an array of strings. One is selected at random as the key for the generated playlist```
+* N: ```defaults to 5 and includes this number of tracks from each related artist```
+* artists: ```List of artists in an array of strings. One is selected at random as the key for the generated playlist```
 						
-We'll re-use our array from the "[Lookup Artist Codes in Spotify](#lookup) step above to populate our request:
+We'll re-use the array from the "[Lookup Artist Codes in Spotify](#lookup) step above to populate the request:
 
 ```
 ["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", 
@@ -622,7 +622,7 @@ We'll re-use our array from the "[Lookup Artist Codes in Spotify](#lookup) step 
 "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 ```
 
-Paste it into the "artists" textbox and then click the "Update" button.
+Paste it into the "artists" textboxes and then click the "Update" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i23.png "Update Environment") 
 
@@ -638,11 +638,13 @@ Click "Spotify Playlist Generator" under "All Collections," select "SpotifyGenV1
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i26.png "Success")
 
-Launch **Spotify** and at the top of your "Playlists" list you should also see the newly generated playlist.
+Launch **Spotify** and you should now see the newly generated playlist at the top of your "Playlists" panel.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i27.png "New Playlist")
 
 Any time you'd like to generate a new playlist and discover new artists, launch "Collection Runner" and replay the "Spotify Playlist Generator" collection. When the results aren't interesting or unique any longer, swap out artist codes with new batches of artists generated from the final [query of the "Record Collection" database](#final) as needed.
+
+Listen to new music.
 
 [Back To Top](#top)
 
@@ -655,7 +657,7 @@ Any time you'd like to generate a new playlist and discover new artists, launch 
 
 ### Install SQLite
 
-Although we did most of the SQL work in **SQLiteStudio**, we used the **SQLite** command line tool to initialize our database file. There are many SQL application options available, but **SQLite** is free, easy to use, and lightweight. 
+Although we did most of the SQL work in **SQLiteStudio**, we used the **SQLite** command line tool to initialize our database file. There are many SQL applications available, but **SQLite** is free, easy to use, and lightweight. 
 
 Please note, you will also need XCode Command Line Tools Installed on your computer to instal **SQLite**. If you don't have that installed, you can enter the following command in **Terminal** to install it:
 
@@ -663,31 +665,31 @@ Please note, you will also need XCode Command Line Tools Installed on your compu
 xcode-select --install
 ```
 
-If you're unfamiliar with the terminal, [MakeUseOf](https://www.makeuseof.com) has a great [guide for beginners](https://www.makeuseof.com/tag/beginners-guide-mac-terminal/). 
+If you're unfamiliar with the terminal, [MakeUseOf](https://www.makeuseof.com) has a great [guide for beginners](https://www.makeuseof.com/tag/beginners-guide-mac-terminal/) to get you started. 
 
 With Xcode installed, you can download **SQLite** [here](https://www.sqlite.org/download.html). Once you've downloaded the file, unzip it and return to the **Terminal**. 
 
 ![Terminal Window](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i1.png "Terminal Window")
 
-Within the **Terminal**, enter the following code to access your "Downloads" folder.
+Within the **Terminal**, enter the following command to access your "Downloads" folder.
 
 ```console
 cd Downloads/
 ```
 
-Next, access the folder for the file you just unzipped. In this instance, the folder is named <code>sqlite-autoconf-3290000</code>. Paste the command below into the **Terminal** to change the directory. Remember to swap out the file name if your's doesn't match.
+Next, access the folder for the file you just unzipped. In this instance, the folder is named <code>sqlite-autoconf-3290000</code>. Paste the command below into the **Terminal** to switch the directory. Remember to adjust the filename if your filename doesn't match.
 
 ```console
 cd sqlite-autoconf-3290000
 ```
 
-Next, enter the command below to begin the installation:
+Next, enter the command below into the **Terminal** to begin the installation:
 
 ```console
 ./configure --prefix=/usr/local
 ```
 
-When the process completes, enter the last command to finish the installation:
+When the process completes, enter the last command in the **Terminal **to finish the installation:
 
 ```console
 make
