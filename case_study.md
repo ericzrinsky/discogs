@@ -150,36 +150,36 @@ Browse to the database file, give your database a name (we used "Record Collecti
 
 Verify that you have all 4 record collection .CSV files. Those files include:
 
-* Eric's Record Collection: ```/Users/ericzrinsky/Downloads/Eric's Record Collection.csv```
-* Leigh’s Record Collection: ```/Users/ericzrinsky/Downloads/Leigh's Record Collection.csv```
-* Steve's Record Collection: ```/Users/ericzrinsky/Downloads/Steve's Record Collection.csv```
-* Paul's Record Collection: ```/Users/ericzrinsky/Downloads/Paul's Record Collection.csv```
+* Eric's Record Collection.csv
+* Leigh’s Record Collection.csv
+* Steve's Record Collection.csv
+* Paul's Record Collection.csv
 
-We'll take the steps below to import each of them into **SQLiteStudio** for use in our database.
+Take the steps below to import each of the files into **SQLiteStudio** for use in the database.
  
 1. Double-click the "Record Collection" database in the "Databases" panel
-2. Click "Tables" under that database to highlight it
-3. Click **Tools**—>**Import** in the navbar.
+2. Click "Tables" under "Record Collection" to highlight it
+3. Click **Tools** —> **Import** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i32.png "Import Table")
 
 Start with the .CSV file named "Eric's Record Collection.csv." 
 
-In SQL, datasets are organized in "tables." Thus, any file that we import will be referred to as a table. Give the table for "Eric's Record Collection" a name. I used "eric_records" for the first file and followed the same schema for each subsequent file. Then, click the "Continue" button.
+In SQL, datasets are organized in "tables." Thus, any .CSV file that we import is referred to as a table. Give the table for "Eric's Record Collection" a name. We used "eric_records" for the first file and followed the same schema for each subsequent file. Then, click the "Continue" button.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i33.png "Import Table")
 
-The subsequent screen allows you to customize exactly how **SQLiteStudio** will import and process your data. Follow the steps below to configure your new table.
+The subsequent screen allows you to adjust how **SQLiteStudio** imports and processes your data. Follow the steps below to configure the new table.
 
-1. Browse to file for the first dataset on your computer. 
-2. Verify that it says "CSV" in "Data source type" drop-down 
-3. Click the check box for "First line represents CSV column names" 
+1. Browse to the file for the first dataset on your computer. 
+2. Verify that it says "CSV" in the "Data source type" drop-down. 
+3. Click the checkbox for "First line represents CSV column names." 
 4. Verify that ", (comma)" is set for the "Field separator" drop-down. 
-5. Click the "Done" button. Repeat this process for the 3 other .CSV files.
+5. Click the "Done" button. 
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i34.png "Import Table")
 
-Repeat this process with the remaining 3 .CSV files:
+Repeat this process for the remaining 3 .CSV files:
 
 * "Leigh’s Record Collection" —> "leigh_records"
 * "Steve's Record Collection" —> "steve_records"
