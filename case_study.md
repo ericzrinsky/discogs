@@ -40,8 +40,8 @@ This project will attempt to accomplish the following goals:
 
 * [Overview](#overview)
 * [Requirements](#requirements)
-	* [Memberships](membership)
-	* [Software](software)
+	* [Memberships](#membership)
+	* [Software](#software)
 	* [Files](#files)
 * [Read The Doc](#read)
 	* [Gather Data Resources](#gather)
