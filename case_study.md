@@ -285,7 +285,7 @@ FROM   paul_records AS p
 ORDER  BY artist; 
 ```
 
-If the query was successful, you should see "1462" for the "Total rows loaded" at the top of your results and you should see each row with data for the "Artist" and "Title" columns.
+If the query was successful, you should see "1462" for the "Total rows loaded" at the top of your results and each row should contain data for the "Artist" and "Title" columns.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i37.png "UNION Query - All")
 
@@ -308,17 +308,17 @@ FROM   paul_records AS p
 ORDER  BY artist; 
 ```
 
-If your query was successful, you should now see "882" for the "Total rows loaded:" since it is likely that some artists had more than one album (or "Title") associated with them. Your results should also only display one column—"Artist."
+If your query was successful, you should now see "882" for the "Total rows loaded:" since it is likely that some artists had more than one album (or "Title") associated with them. Your results should also only display the "Artist" column
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i38.png "UNION Query - Artists")
 
-This gets a us a little bit closer, but 882 is still a bit too unwieldy for us to work with for a **Spotify** playlist. 
+This gets a us a little bit closer to our end result, but 882 is still unwieldy for a **Spotify** playlist. 
 
-Let's dig into of the goals for this project: 
+Let's dig into one of the goals for this project: 
 
 * Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
 
-In order to accomplish that result, we need to compare the "Artists" column in "eric_records" to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually, exclude the artists found in both the "eric_records" table and comparison table, and then add those results to a new table called "new_artists." It sounds confusing, but it will make more sense after we run our SQL queries. 
+In order to accomplish that result, we need to compare the "Artists" column in the "eric_records" table to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually, exclude the artists found in both the "eric_records" table and comparison table, and then add those results to a new table called "new_artists." It sounds confusing, but it will make more sense after we run our SQL queries. 
 
 Right click "Tables" in the "Databases" panel and then click "Create A Table."
 
@@ -328,7 +328,7 @@ Type "new_artists" in the "Table name:" textbox and then click the "Add column" 
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i40.png "Add a column")
 
-Next, we'll configure the single column for the "new_artists" table with the instructions below:
+Next, configure the column in the "new_artists" table with the instructions below:
 
 1. Type "artist" in the "Column name:" textbox. 
 2. Type "STRING" in the "Data type:" checkbox.
@@ -338,7 +338,7 @@ Next, we'll configure the single column for the "new_artists" table with the ins
 
 The "new_artists" table is now ready to accept data. 
 
-Return to the "SQL Editor." Tweak the code to include an "EXCEPT" parameter that evaluates when an artist name in the "Artist" column is found in the "eric_records" table and comparison table. This comparison and exclusion process repeats with each subsequent table. To make things a little more interesting, we will also add a "WHERE" parameter to each comparison to only consider vinyl records (and their associated artist) released after 2010. Finally, we'll insert all of the results into the "new_artists" table.
+Return to the "SQL Editor." Tweak the code to include an "EXCEPT" parameter that evaluates when an artist name in the "Artist" column is found in the "eric_records" table and comparison table. This comparison and exclusion process repeats with each subsequent record collection table. To make things a little more interesting, we will also add a "WHERE" parameter to each comparison to only consider vinyl records (and their associated artist) released after 2010. Finally, we'll insert all of the results into the "new_artists" table.
 
 Paste the code below into the "SQL Editor":
 
@@ -376,9 +376,9 @@ WHERE  released > 2010
 ORDER  BY artist; 
 ```
 
-If the request was successful, you should see 294 rows contained within the "new_artists" table. We've eliminated 588 rows with our query, but 294 is still a bit too unwieldy for our purposes. 
+If the request was successful, you should see 294 rows contained within the "new_artists" table. We've eliminated 588 rows with our query, but 294 is still too large for our purposes. 
 
-Since the results of the previous query are now contained within a table (new_artists), we can run one more additional query to limit results to 30 entries and randomize the results. This will allow us to generate a manageable and differentiated list of artists with each new query.
+Since the results of the previous query are now store within a table (new_artists), we can run one more additional query to limit the results to 30 entries and randomize the results. This allows us to generate a manageable and differentiated list of artists with each new query.
 
 Paste the code below into the "SQL Editor":
 <a name="final"></a>
@@ -404,7 +404,7 @@ Snapcase, Boygenius, Preoccupations,
 Fang, Sleep, Minor Threat, Mandolin Orange
 ```
 
-Now that we have our list of artists, we're ready to gather "Spotify Artist" codes for use in our calls to the **Spotify** API.
+Now that we have the list of artists, we're ready to gather "Spotify Artist" codes for use in the calls to the **Spotify** API.
 
 [Back To Top](#top)
 
@@ -412,7 +412,9 @@ Now that we have our list of artists, we're ready to gather "Spotify Artist" cod
 
 ### Look Up Artist Codes in Spotify
 
-There isn't an easy way to gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
+There isn't a way to gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. 
+
+Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i42.png "Spotify Web Application")
 
@@ -420,7 +422,7 @@ Click "Search" and type the name of the first artist in the "Start typing..." te
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i43.png "Spotify Web Application")
 
-Browse to the appropriate artist listing in the search results and then copy the alphanumeric artist code at the end of the URL in the address bar.
+Browse to the appropriate artist listing in the search results and copy the alphanumeric "Artist Code" at the end of the URL in the address bar.
 
 ![Spotify](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i44.png "Artist Code")
 
@@ -459,7 +461,7 @@ Repeat this process until you have obtained all 30 of the "Artist Codes."
 |29|Indecision|3WdlM6O8p5wxmx3p7hrPHM|
 |30|Minus The Bear|0YQBN02bmZvwGNrrWsg2sT|
 
-We'll need to insert all of the "Artist Codes" into an array of strings for a future step, so let's take care of that now:
+We'll need to insert all of the "Artist Codes" into an array of strings during a future step, so let's take care of that now:
 
 ```
 ["6tEdQbmg3bKE6IjmH5hO9d", "2s4gtd98phMFZf7dMagxjU", 
@@ -479,7 +481,7 @@ We'll need to insert all of the "Artist Codes" into an array of strings for a fu
 "3WdlM6O8p5wxmx3p7hrPHM", "0YQBN02bmZvwGNrrWsg2sT"]
 ```
 	
-We've got what we need to build our application that generates a **Spotify** playlist from the data we've obtained.	
+We've got what we need to build an application that generates a **Spotify** playlist from affinity data and we're ready to register an application on the [Spotify For Developers Portal](https://developer.spotify.com/dashboard).	
 
 [Back To Top](#top)
 
@@ -488,7 +490,7 @@ We've got what we need to build our application that generates a **Spotify** pla
 
 ### Register A Client ID For A Spotify Application 
 
-If you haven't already done so, register for access to the [Spotify For Developers](https://developer.spotify.com/dashboard) Portal. After you have gained access, navigate to the dashboard at the following address:
+If you haven't already done so, register for access to the [Spotify For Developers Portal](https://developer.spotify.com/dashboard). After you have gained access, navigate to the dashboard at the following address:
 
 ```
 https://developer.spotify.com/dashboard/applications
