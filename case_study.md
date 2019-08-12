@@ -320,7 +320,7 @@ Let's take a step back and dig into one of the goals for this project:
 
 * Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
 
-In order to accomplish that result, we need to compare the "Artists" column in the "eric_records" table to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually, exclude the artists found in both the "eric_records" table and comparison table, and then add those results to a new table called "new_artists."
+In order to accomplish that result, we need to compare the "Artists" column in the "eric_records" table to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually.  Next, we'll exclude the artists found in both the "eric_records" table and comparison table. Finally, we'll add those results to a new table called "new_artists." 
 
 Right click "Tables" in the "Databases" panel and then click "Create A Table."
 
