@@ -487,7 +487,6 @@ We've got what we need to build an application that generates a **Spotify** play
 
 <a name="register"></a>
 
-
 ### Register A Client ID For A Spotify Application 
 
 If you haven't already done so, register for access to the [Spotify For Developers Portal](https://developer.spotify.com/dashboard). After you have gained access, navigate to the dashboard at the following address:
@@ -500,7 +499,7 @@ We need to create a "Client ID" for the web application we will build in this st
 
 ![Spotify For Developers - Dashboard](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i4.png "Create A Client ID")
 
-Fill out the textboxes for "Step 1." In this step, provide **Spotify** with details about the application and what it will do. When you're finished, click the "Next" button.
+In "Step 1," provide **Spotify** with details about the application and what it will do. When you're finished, click the "Next" button.
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i5.png "Step 1")
 
@@ -508,7 +507,7 @@ Since this is not a commercial application, click the "No" button in "Step 2."
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i6.png "Step 2")
 
-After reading the "Developer Terms of Service," "Branding Guidelines," and "Privacy Policy," click the checkboxes next to each item and then click the "Submit" button.
+After reading the "Developer Terms of Service," "Branding Guidelines," and "Privacy Policy" in "Step 3," click the checkboxes next to each item and then click the "Submit" button.
 
 ![Spotify For Developers - Create A Client ID](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i7.png "Step 3")
 
