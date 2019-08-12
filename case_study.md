@@ -185,7 +185,7 @@ Repeat this process for the remaining 3 .CSV files:
 * "Steve's Record Collection" —> "steve_records"
 * "Paul's Record Collection" —> "paul_records"
 
-Once you're finished with the import process, it's time to define the "Data type" for each column in the tables. Use the "data types" below for the columns in the "eric_records" table and then repeat this process for the 3 remaining tables.
+Once you're finished with the import process, define the "Data type" for each column in the tables. Use the "data types" below for the columns in the "eric_records" table and then repeat this process for the 3 remaining tables.
 
 <table>
 	<tr>
@@ -258,7 +258,7 @@ Once you're finished with the import process, it's time to define the "Data type
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i35.png "Data Type")
 
-Now that the data in place and the columns are appropriately defined, it's time to experiment with the database. To do that, launch the "SQL Editor" in **SQLiteStudio**. Click **Tools** —> **Open SQL Editor** in the navbar.
+Now that the data is in place and the columns are appropriately defined, it's time to experiment with the database. To do that, launch the "SQL Editor" in **SQLiteStudio**. Click **Tools** —> **Open SQL Editor** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i36.png "Open SQL Editor")
 
