@@ -262,7 +262,7 @@ Now that the data is in place and the columns are appropriately defined, it's ti
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i36.png "Open SQL Editor")
 
-Before we run any complicated queries in the "SQL Editor," we should first verify that we can readily access all of the data in our tables. We'll do that with a few basic UNION parameters. 
+Before we run any complicated queries in the "SQL Editor," we should first verify that we can readily access all of the data in the tables. We'll do that with a few basic UNION parameters in the query. 
 
 Paste the code below into the "SQL Editor":
 
