@@ -98,7 +98,7 @@ Before you attempt to build this project, please verify that you have the follow
 
 In order to construct a relational database, we need datasets to populate it. It may seem counterintuitive, but to generate a playlist that exposes a listener to music that they are less likely to know, I determined that I needed to start with that listener's own musical affinity data—in this case, my own. This was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. 
 
-To export a personal collection on **Discogs**, log in and click the "Export" link in the navbar.
+To export a personal collection on **Discogs** to a .CSV file, log in and click the "Export" link in the navbar.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i3.png "Discogs")
 
@@ -159,8 +159,8 @@ Verify that you have all 4 record collection .CSV files. Those files include:
 
 Take the steps below to import each of the files into **SQLiteStudio** for use in the database.
  
-1. Double-click the "Record Collection" database in the "Databases" panel
-2. Click "Tables" under "Record Collection" to highlight it
+1. Double-click the "Record Collection" database in the "Databases" panel.
+2. Click "Tables" under "Record Collection" to highlight it.
 3. Click **Tools** —> **Import** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i32.png "Import Table")
@@ -171,7 +171,7 @@ In SQL, datasets are organized in "tables." Thus, any .CSV file that we import i
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i33.png "Import Table")
 
-The subsequent screen allows you to adjust how **SQLiteStudio** imports and processes your data. Follow the steps below to configure the new table.
+The next screen allows you to adjust how **SQLiteStudio** imports and processes your data. Follow the steps below to configure the new table.
 
 1. Browse to the file for the first dataset on your computer. 
 2. Verify that it says "CSV" in the "Data source type" drop-down. 
@@ -310,13 +310,13 @@ FROM   paul_records AS p
 ORDER  BY artist; 
 ```
 
-If your query was successful, you should now see "882" for the "Total rows loaded:" since it is likely that some artists had more than one album (or "Title") associated with them. Your results should also only display the "Artist" column
+If your query was successful, you should now see "882" for the "Total rows loaded:" since it is likely that some artists had more than one album (or "Title") associated with them. Your results should also only display the "Artist" column.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i38.png "UNION Query - Artists")
 
-This gets a us a little bit closer to our end result, but 882 is still unwieldy for a **Spotify** playlist. 
+This gets a us closer to our end result, but 882 artists is still unwieldy for a **Spotify** playlist. 
 
-Let's dig into one of the goals for this project: 
+Let's take a step back and dig into one of the goals for this project: 
 
 * Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
 
@@ -414,7 +414,7 @@ Now that we have the list of artists, we're ready to gather "Spotify Artist" cod
 
 ### Look Up Artist Codes in Spotify
 
-There isn't a way to gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. 
+There isn't a way to easily gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. 
 
 Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
 
@@ -529,7 +529,7 @@ Now that the application is registered with the **Spotify For Developers Portal*
 
 Please note, the steps that follow were informed by <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide for generating **Spotify** playlists with **Postman**. Though his instructions provide a good starting point, they are somewhat light on details and assume a more advanced understanding of REST APIs in general. 
 
-In a new tab (leave the window for the **Spotify for Developers Portal** open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)** and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
+In a new tab (leave the window for the **Spotify for Developers Portal** open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)** and clone Ankit's "Collection" and "Environment" to **Postman** by clicking the "Run in Postman" button.
 
 ![Postman Blog](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i9.png "Open In Postman")
 
@@ -585,7 +585,7 @@ When you're finished, click the "Request Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i19.png "Get New Access Token")
 
-You may be asked to log into your **Spotify** account. Provide your **Spotify** username and password to login in. In the new modal, scroll to the bottom, copy the "refresh_token" and then click the "Use Token" button.
+You may be asked to log into your **Spotify** account. Provide your **Spotify** username and password to login in. In the new modal, scroll to the bottom, copy the "refresh_token," and then click the "Use Token" button.
 
 ![Postman](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i20.png "Get New Access Token") 
 
@@ -599,9 +599,9 @@ Click the "Edit" button next to the "SpotifyGenV1.template" header.
 
 Paste the token from your clipboard into the "refresh_token" textboxes and fill out the remainder of the fields with the following details:
 
-* user_id: ```your Spotify username```
-* country_code: ``country code in ISO 3166-1 format``
-* N: ```defaults to 5 and includes this number of tracks from each related artist```
+* user_id: ```Your Spotify username```
+* country_code: ``Country code in ISO 3166-1 format``
+* N: ```Defaults to 5 and includes this number of tracks from each related artist```
 * artists: ```List of artists in an array of strings. One is selected at random as the key for the generated playlist```
 						
 We'll re-use the array from the "[Lookup Artist Codes in Spotify](#lookup) step above to populate the request:
