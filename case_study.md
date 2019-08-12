@@ -15,7 +15,7 @@ The generated playlist often includes music that the listener already knows. If 
 
 ![Overview](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i45.png "Discover Weekly")
 
-In addition, the playlist itself is typically around 2 hours in length and short enough that it can be consumed in a single workday. This may leave listeners waiting an entire week for **Spotify** to generate the next "Discover Weekly" playlist. Even worse, the new "Discover Weekly" playlist often misses the mark entirely and fails to engage a listener at all.
+In addition, the playlist itself is typically around 2 hours in length and short enough that it can be consumed in a single workday. This may leave listeners waiting an entire week for **Spotify** to generate the next "Discover Weekly" playlist. Even worse, the new "Discover Weekly" playlist may fail to engage a listener's tastes at all.
 
 I began to think about my own musical tastes and how different mediums affect my listening behavior and my preferences. As an avid record collector, I find myself curating my collection carefully—vinyl isn’t cheap anymore! With that in mind, I assume that this type of careful purchase behavior holds true for most collectors. Very few people spend $20-30 dollars for a new record unless it's something they really want.
 
