@@ -525,9 +525,9 @@ It's time to build.
 
 Now that the application is registered with the **Spotify For Developers Portal**, we have the permissions in place to access the **Spotify** API. 
 
-Please note, the steps that follow were informed by <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide for generating **Spotify** playlists with **Postman**. Though his instructions provide a good starting point, they are somewhat light on details and assume a more advanced understanding of REST APIs in general. You can access the original version of that guide on the <a href="https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection"><b>Postman Blog</b></a></p>
+Please note, the steps that follow were informed by <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide for generating **Spotify** playlists with **Postman**. Though his instructions provide a good starting point, they are somewhat light on details and assume a more advanced understanding of REST APIs in general. 
 
-In a new tab (leave the window for the **Spotify for Developers** Portal open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)** and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
+In a new tab (leave the window for the **Spotify for Developers Portal** open), browse to the **[Postman Blog](https://blog.getpostman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/)** and clone Ankit's "Collection" and "Environment" to Postman by clicking the "Run in Postman" button.
 
 ![Postman Blog](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i9.png "Open In Postman")
 
