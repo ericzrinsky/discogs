@@ -15,13 +15,13 @@ The generated playlist often includes music that the listener already knows. If 
 
 ![Overview](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i45.png "Discover Weekly")
 
-In addition, the playlist itself is typically around 2 hours in length and short enough that it can be consumed in a single workday. This may leave listeners waiting an entire week for **Spotify** to generate the next "Discover Weekly" playlist. Even worse, the new "Discover Weekly" playlist may fail to engage a listener's tastes at all.
+In addition, the playlist itself is typically around 2 hours in length and short enough that it can be consumed in a single workday. This may leave listeners waiting an entire week for **Spotify** to generate the next "Discover Weekly" playlist. Even worse, the new "Discover Weekly" playlist may fail to engage a listener at all.
 
-I began to think about my own musical tastes and how different mediums affect my listening behavior and my preferences. As an avid record collector, I find myself curating my collection carefully—vinyl isn’t cheap anymore! With that in mind, I assume that this type of careful purchase behavior holds true for most collectors. Very few people spend $20-30 dollars for a new record unless it's something they really want.
+I began to think about my own musical tastes and how different mediums affect my listening behavior and preferences. As an avid record collector, I find myself curating my collection carefully—vinyl isn’t cheap anymore! With that in mind, I assume that this type of purchase behavior holds true for most collectors. Very few people spend $20-30 dollars for a new record unless it's something they really want.
 
-I took this thought one step further. People share music from **Spotify** all the time, but because it's "free" and there is a low barrier to entry, it becomes almost a reflex. Sometimes the music they share is engaging and well worth the listen. Other times, the music is nothing special or so prevalent that it seems like everyone has heard it. 
+I took this thought one step further. People share music from **Spotify** all the time, but because it's "free" and there is a low barrier to entry, it almost becomes a reflex. Sometimes the music is engaging and well worth the listen. Other times, the music is nothing special or so prevalent that it seems like everyone has already heard it. 
 
-How much of this lackluster sharing is a result of over saturation and over exposure **Spotify's** algorithmic approach? If there was an easy way to capture the items in someone's record collection and use that data to inform **Spotify** decisions, it might help to generate playlists that hit the mark more often.
+How much of this lackluster sharing behavior is a result of over saturation and over exposure **Spotify's** algorithmic approach? If there was an easy way to capture the items in someone's record collection and use that data to inform **Spotify** decisions, it might help to generate playlists that hit the mark more often.
 
 I set to the task of testing this hypothesis.
 
@@ -32,7 +32,7 @@ This project will attempt to accomplish the following goals:
 1. Socially-source vinyl record affinity data from other music aficionados
 2. Assemble a relational database of artist and album information 
 3. Use SQL queries to interact with with the database to pull out the information that I need
-3. Create a web-application that interacts with **Spotify's** REST API with aid of **Postman** by consulting <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide
+3. Create a web-application that interacts with **Spotify's** REST API with the aid of **Postman** and by consulting <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide
 4. Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
 5. Document the entire process in a project guide that is thorough, but easy to follow
 
@@ -96,7 +96,7 @@ Before you attempt to build this project, please verify that you have the follow
 
 ### Gather Data Resources
 
-In order to construct a relational database, we need datasets (or tables) to populate it. It may seem counter-intuitive, but to generate a playlist that exposes me to music I'm unlikely to know, I determined that I needed to start with my own musical affinity data. Plus, this was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. To export a personal collection on Discogs, log in  and click the "Export" link in the navbar.
+In order to construct a relational database, we need datasets to populate it. It may seem counter-intuitive, but to generate a playlist that exposes me to music that I'm less likely to know, I determined that I needed to start with my own musical affinity data. This was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. To export a personal collection on **Discogs**, log in and click the "Export" link in the navbar.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i3.png "Discogs")
 
@@ -104,13 +104,13 @@ Click the "Collection" radio button and then click the "Request Data Export" but
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i28.png "Collection")
 
-**Discogs** emails a link to the .CSV file when it'ss ready to download. 
+**Discogs** emails a link to the .CSV file when it's ready to download. 
 
-With my own collection data in-hand, I needed to gather additional collections from friends who also log their records on **Discogs**. To do this, I sent out a plea on Facebook.
+With my own collection data in-hand, I needed to gather additional collections from friends who also log their record collections on **Discogs**. To do this, I posted a plea on **Facebook**.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i29.png "Collection")
 
-Within a few moments, I received three additional datasets from friends and I was ready to build a relational database.
+Within a few moments, I received three additional datasets from supportive friends and I was ready to build a relational database.
 
 [Back To Top](#top)
 
@@ -118,7 +118,9 @@ Within a few moments, I received three additional datasets from friends and I wa
 
 ### Create A Relational Database For The Collection
 
-Before we can import anything, we need a database and that means we must first generate a database file. We'll do that in the the **Terminal** with the help of the **SQLite** command line tool. Please note, if you haven't already installed the **SQLite** command line tool, you need to do that first. Detailed instructions are available in the [Appendix](#install) of this guide.
+Before we can import anything, we need a database and that means we must first generate a database file. We'll do that in the the **Terminal** with the help of the **SQLite** command line tool. 
+
+Please note, if you haven't already installed the **SQLite** command line tool, you need to do that first. Detailed instructions are available in the [Appendix](#install) of this guide.
 
 Launch the **Terminal** and initialize **SQLite** with the command below.
 
@@ -138,7 +140,7 @@ Next, create a new database with the following command:
 sqlite3 record_collection.db;
 ```
 
-The database file is now ready and we can exit the **Terminal** and launch **SQLiteStudio**. From here, We need to add our new database file ("record_collection.db") to **SQLiteStudio**. To do that, click **Database** —> **Add a database** in the navbar.
+The database file is now ready and we can exit the **Terminal** and launch **SQLiteStudio**. From here, we need to add our new database file ("record_collection.db") to **SQLiteStudio**. To do that, click **Database** —> **Add a database** in the navbar.
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i30.png "Add A Database")
 
