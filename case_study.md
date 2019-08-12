@@ -96,7 +96,9 @@ Before you attempt to build this project, please verify that you have the follow
 
 ### Gather Data Resources
 
-In order to construct a relational database, we need datasets to populate it. It may seem counterintuitive, but to generate a playlist that exposes a listener to music that they are less likely to know, I determined that I needed to start with that listener's own musical affinity data—in this case, my own. This was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. To export a personal collection on **Discogs**, log in and click the "Export" link in the navbar.
+In order to construct a relational database, we need datasets to populate it. It may seem counterintuitive, but to generate a playlist that exposes a listener to music that they are less likely to know, I determined that I needed to start with that listener's own musical affinity data—in this case, my own. This was easy to come by since I have [catalogued my entire record collection](https://www.discogs.com/user/ericmz23/collection) on the **Discogs** website. 
+
+To export a personal collection on **Discogs**, log in and click the "Export" link in the navbar.
 
 ![Discogs - Collection Screen](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i3.png "Discogs")
 
