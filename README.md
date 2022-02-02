@@ -689,7 +689,7 @@ Next, enter the command below into the **Terminal** to begin the installation:
 ./configure --prefix=/usr/local
 ```
 
-When the process completes, enter the last command in the **Terminal **to finish the installation:
+When the process completes, enter the last command in the **Terminal** to finish the installation:
 
 ```console
 make
