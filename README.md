@@ -19,7 +19,7 @@ I began to think about my own musical tastes and how different mediums affect my
 
 I took this thought one step further. People share music from **Spotify** all the time, but because it's "free" and there is a low barrier to entry, it almost becomes a reflex. Sometimes the music is engaging and well worth the listen. Other times, the music is nothing special or so prevalent that it seems like everyone has already heard it. 
 
-How much of this lackluster sharing behavior is a result of over saturation and over exposure **Spotify's** algorithmic approach? If there was an easy way to capture the items in someone's record collection and use that data to inform **Spotify**'s decisions, it might help to generate playlists that hit the mark more often.
+How much of this lackluster sharing behavior is a result of over saturation and over-exposure **Spotify's** algorithmic approach? If there was an easy way to capture the items in someone's record collection and use that data to inform **Spotify**'s decisions, it might help to generate playlists that hit the mark more often.
 
 I set to the task of testing this hypothesis.
 
@@ -29,9 +29,9 @@ This project will attempt to accomplish the following goals:
 
 1. Socially-source vinyl record affinity data from other music aficionados
 2. Assemble a relational database of artist and album information 
-3. Use SQL queries to interact with with the database to pull out the information that I need
+3. Use SQL queries to interact with the database to pull out the information that I need
 3. Create a web-application that interacts with **Spotify's** REST API with the aid of **Postman** and by consulting <a href="https://www.linkedin.com/in/ankit-sobti/"><b>Ankit Sobti</b></a>'s guide
-4. Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
+4. Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that exclude artists from my own record collection
 5. Document the entire process in a project guide that is thorough, but easy to follow
 
 ## Contents
@@ -312,15 +312,15 @@ If your query was successful, you should now see "882" for the "Total rows loade
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i38.png "UNION Query - Artists")
 
-This gets a us closer to our end result, but 882 artists is still unwieldy for a **Spotify** playlist. 
+This gets us closer to our end result, but 882 artists are still unwieldy for a **Spotify** playlist. 
 
 Let's take a step back and dig into one of the goals for this project: 
 
-* Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that excludes artists from my own record collection
+* Generate new **Spotify** playlists on the fly with socially-sourced vinyl-record affinity data that exclude artists from my own record collection
 
-In order to accomplish that result, we need to compare the "Artists" column in the "eric_records" table to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually.  Next, we'll exclude the artists found in both the "eric_records" table and comparison table. Finally, we'll add those results to a new table called "new_artists." 
+In order to accomplish that result, we need to compare the "Artists" column in the "eric_records" table to each of the other tables ("leigh_records," "steve_records," and "paul_records") individually.  Next, we'll exclude the artists found in both the "eric_records" table and the comparison table. Finally, we'll add those results to a new table called "new_artists." 
 
-Right click "Tables" in the "Databases" panel and then click "Create A Table."
+Right-click "Tables" in the "Databases" panel and then click "Create A Table."
 
 ![SQLiteStudio](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i39.png "Create A New Table")
 
@@ -412,7 +412,7 @@ Now that we have the list of artists, we're ready to gather "Spotify Artist" cod
 
 ### Look Up Artist Codes in Spotify
 
-There isn't a way to easily gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web-application. 
+There isn't a way to easily gather "Artist Codes" within the mobile or desktop versions of the **Spotify** application; however, we can get what we need if we use the web application. 
 
 Navigate to [https://open.spotify.com](https://open.spotify.com) and log in.
 
@@ -703,7 +703,7 @@ sqlite3
 
 ![Terminal - Install Successful](http://elearning.monetate.net.s3.amazonaws.com/z/records/img/i2.png "Install Successful")
 
-The **SQLite** command line tool is now installed and ready to generate database files.
+The **SQLite** command-line tool is now installed and ready to generate database files.
 
 [Back To Top](#top)
 
